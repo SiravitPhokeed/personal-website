@@ -1,3 +1,17 @@
+@use "../base/animations.scss" as a;
+@use "../components/button.scss" as cb;
+
 :root {
     font-size: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    @include cb.clicky();
+    font-size: 1rem;
+    border: none;
 }
