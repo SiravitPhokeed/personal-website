@@ -1,0 +1,24 @@
+@use "../abstracts/palette.scss" as p;
+@use "../components/button.scss" as cb;
+
+.title-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "header", "image";
+}
+
+.header {
+    grid-area: "header";
+    > .title {
+        font-size: 2rem;
+        font-weight: 1000;
+    }
+    > .subtitle {
+        font-size: 1rem;
+        font-weight: 300;
+    }
+}
+
+.continue-button {
+    @include cb.button(p.$accent, p.$text-accent, 1.1rem);
+}
