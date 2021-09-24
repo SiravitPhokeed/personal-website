@@ -1,0 +1,9 @@
+@use "../abstracts/palette.scss" as p;
+
+.menu {
+    width: calc(100vw - 2rem);
+    padding: 0.6rem 1rem;
+    position: fixed;
+    z-index: 5;
+    background: p.$card-translucent;
+}

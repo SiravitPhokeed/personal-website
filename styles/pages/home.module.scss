@@ -1,24 +1,166 @@
+@use "../base/animations.scss" as a;
 @use "../abstracts/palette.scss" as p;
 @use "../components/button.scss" as cb;
 
-.title-section {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas: "header", "image";
+.header {
+    margin: 2rem 2rem 1rem 2rem;
+    color: p.$text-primary;
+    &-header {
+        font-size: 2.75rem;
+        font-weight: 1000;
+        text-align: center;
+    }
+    &-subtitle {
+        font-size: 1.5rem;
+        text-align: center;
+    }
 }
 
-.header {
-    grid-area: "header";
+// Hi, I'm Siravit P!
+.title-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "header image";
+    gap: 2rem;
+    min-height: 100vh;
+    background: linear-gradient(315deg, p.$primary, p.$secondary);
+}
+
+.title-header {
+    grid-area: header;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: calc(100% - 6rem);
+    margin: 8rem 3rem 0 3rem;
+    color: p.$text-primary;
+}
+
+.title-text {
     > .title {
-        font-size: 2rem;
+        font-size: 2.25rem;
         font-weight: 1000;
     }
     > .subtitle {
-        font-size: 1rem;
+        font-size: 1.25rem;
         font-weight: 300;
     }
 }
 
+.title-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.title-image {
+    grid-area: image;
+    height: 100vh;
+    width: 100%;
+    background-image: url("../../public/index-background.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.continue-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem;
+}
+
 .continue-button {
-    @include cb.button(p.$accent, p.$text-accent, 1.1rem);
+    @include cb.button(p.$accent, p.$text-accent, 1.3rem);
+}
+
+.secondary-button {
+    @include cb.button(p.$tertiary, p.$text-primary, 1.3rem);
+}
+
+// Stuff I've worked on
+.work-section {
+    min-height: calc(100vh - 2.75rem);
+    border-top: 1rem solid p.$text-primary;
+    background: linear-gradient(315deg, p.$tertiary, p.$primary);
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 0.8rem;
+    margin: 1rem;
+    &-container {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        padding-right: 0.3rem;
+        height: calc(100vh - 15.5rem);
+        overflow: hidden scroll;
+    }
+}
+
+.work-card {
+    @include a.clicky-scale-up(1.05);
+    min-width: fit-content;
+    font-size: 0.8rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: p.$text-secondary;
+    background: p.$card;
+    &:hover {
+        padding: 1.3rem;
+    }
+}
+
+// I'm also comfortable with…
+.langs-section {
+    min-height: calc(100vh - 2.75rem);
+    border-top: 1rem solid p.$text-primary;
+    background: linear-gradient(315deg, p.$accent, p.$tertiary);
+}
+
+// Get in touch
+.contact-section {
+    min-height: calc(100vh - 2.75rem);
+    border-top: 1rem solid p.$text-primary;
+    background: linear-gradient(315deg, p.$primary, p.$accent);
+}
+
+.contact-fieldset {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    gap: 2rem;
+    input {
+        display: block;
+        width: calc(100% - 2rem);
+    }
+}
+
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    height: 10rem;
+    justify-content: space-between;
+}
+
+.contact-right {
+    width: 20rem;
+}
+
+.contact-textarea {
+    width: calc(100% - 2rem);
+    height: 8rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.send-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0.3rem;
+}
+
+.send-button {
+    @include cb.button(p.$accent, p.$text-accent, 1.2rem);
 }
