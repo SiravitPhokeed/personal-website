@@ -107,7 +107,22 @@
     color: p.$text-secondary;
     background: p.$card;
     &:hover {
-        padding: 1.3rem;
+        padding: 1.1rem;
+    }
+}
+
+.work-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    > .work-type {
+        width: fit-content;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+        color: p.$text-primary;
+        background: p.$primary;
     }
 }
 

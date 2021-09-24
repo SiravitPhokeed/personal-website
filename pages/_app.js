@@ -2,6 +2,7 @@
 import "../styles/base/reset.scss";
 import "../styles/base/typography.scss";
 import "../styles/layout/menu.scss";
+import "../styles/utils/markdown.scss";
 
 // Components import
 import Layout from "../components/layout.js";

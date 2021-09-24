@@ -10,6 +10,9 @@ import homeStyle from "../styles/pages/home.module.scss";
 // Photos import
 import background_img from "../public/index-background.svg";
 
+// Temporary database import
+import { works } from "../temp-db/works.js";
+
 export default function Home() {
     const router = useRouter();
 
@@ -36,6 +39,28 @@ export default function Home() {
     }
 
     function renderWorkSect(works) {
+        function renderWorks(works) {
+            return (
+                <div className={homeStyle["work-grid"]}>
+                    {works.map(work =>
+                        <Link href={`/work/${work.id}`}>
+                            <a className={homeStyle["work-card"]}>
+                                <div className={homeStyle["work-content"]}>
+                                    <div>
+                                        <h3>{work.name}</h3>
+                                        <p>{work.desc}</p>
+                                    </div>
+                                    <span className={homeStyle["work-type"]}>
+                                        {`${work.type[0].toUpperCase()}${work.type.slice(1)}`}
+                                    </span>
+                                </div>
+                            </a>
+                        </Link>
+                    )}
+                </div>
+            )
+        }
+
         return (
             <section className={homeStyle["work-section"]} id="work">
                 <div className={homeStyle["header"]}>
@@ -43,18 +68,7 @@ export default function Home() {
                     <p className={homeStyle["header-subtitle"]}>Projects and certificates</p>
                 </div>
                 <div className={homeStyle["work-grid-container"]}>
-                    <div className={homeStyle["work-grid"]}>
-                        {works.map(work => {
-                            return (
-                                <Link href={`/work/${work.id}`}>
-                                    <a className={homeStyle["work-card"]}>
-                                        <h3>{work.name}</h3>
-                                        <p>{work.desc}</p>
-                                    </a>
-                                </Link>
-                            )
-                        })}
-                    </div>
+                    {renderWorks(works)}
                 </div>
                 <div className={homeStyle["continue-container"]}>
                     <button className={homeStyle["continue-button"]}>See all</button>
@@ -125,10 +139,7 @@ export default function Home() {
     return (
         <main>
             {renderTitleSect()}
-            {renderWorkSect([
-                { name: "Emocial", desc: "An application to treat lack of cancer", type: "project", id: "0" },
-                { name: "Introduction to Cloud Computing Certificate", desc: "A course of study offered by IBM, an online learning initiative of IBM", type: "certificate", id: "1" },
-            ])}
+            {renderWorkSect(works)}
             {renderLangsSect([
                 { name: "HTML", img: "", id: "0" },
                 { name: "Sass", img: "", id: "1" },
