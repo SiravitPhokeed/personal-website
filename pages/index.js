@@ -8,10 +8,17 @@ import { useRouter } from "next/router";
 import homeStyle from "../styles/pages/home.module.scss";
 
 // Photos import
-import background_img from "../public/index-background.svg";
+import holdingImage from "../public/index-holding.png";
+import emocialImage from "../public/index-emocial.png";
+import langNextImage from "../public/index-lang-next.svg";
+import langReactImage from "../public/index-lang-react.svg";
+import langSassImage from "../public/index-lang-sass.svg";
+import langCppImage from "../public/index-lang-cpp.svg";
 
 // Temporary database import
 import { works } from "../temp-db/works.js";
+import { contacts } from "../temp-db/contacts";
+import { MdLaunch } from "react-icons/md";
 
 export default function Home() {
     const router = useRouter();
@@ -21,7 +28,7 @@ export default function Home() {
             <section className={homeStyle["title-section"]}>
                 <header className={homeStyle["title-header"]}>
                     <div className={homeStyle["title-text"]}>
-                        <h1 className={homeStyle["title"]}>Hi, I'm Siravit P!</h1>
+                        <h1 className={homeStyle["title"]}>Hi, I’m Siravit P!</h1>
                         <p className={homeStyle["subtitle"]}>Front-end web developer and designer working primarily with React</p>
                     </div>
                     <div className={homeStyle["title-buttons"]}>
@@ -33,8 +40,21 @@ export default function Home() {
                         </button>
                     </div>
                 </header>
-                <div className={homeStyle["title-image-container"]}>
-                    <div className={homeStyle["title-image"]}>
+                <div className={homeStyle["title-background-container"]}>
+                    <div className={homeStyle["title-background"]}>
+                        <div className={homeStyle["title-image"]}>
+                            <Image src={holdingImage} width="526" height="612" />
+                            <div className={homeStyle["laptop-container"]}>
+                                <div className={homeStyle["laptop-screen"]}>
+                                    <Image src={emocialImage} objectFit="contain" className={homeStyle["laptop-screen-inner"]} />
+                                </div>
+                                <div className={homeStyle["laptop-keyboard"]} />
+                                <div className={homeStyle["laptop-keyboard-content"]}>
+                                    <h3>Emocial</h3>
+                                    <Link href="/work/0"><a>Learn more about this project <MdLaunch /></a></Link>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -46,7 +66,7 @@ export default function Home() {
             return (
                 <div className={homeStyle["work-grid"]}>
                     {works.map(work =>
-                        <Link href={`/work/${work.id}`}>
+                        <Link key={work.id} href={`/work/${work.id}`}>
                             <a className={homeStyle["work-card"]}>
                                 <div className={homeStyle["work-content"]}>
                                     <div>
@@ -74,19 +94,45 @@ export default function Home() {
                     {renderWorks(works)}
                 </div>
                 <div className={homeStyle["continue-container"]}>
-                    <button className={homeStyle["continue-button"]}>See all</button>
+                    <button className={homeStyle["continue-button"]} onClick={() => router.push("/work/all")}>
+                        See all
+                    </button>
                 </div>
             </section>
         );
     }
 
-    function renderLangsSect(langs) {
+    function renderLangsSect() {
         return (
             <section className={homeStyle["langs-section"]}>
                 <div className={homeStyle["header"]}>
                     <h2 className={homeStyle["header-header"]}>I’m also comfortable with…</h2>
                 </div>
-                <button className={homeStyle["continue-button"]}>See all</button>
+                <div className={homeStyle["langs-main"]}>
+                    <div className={homeStyle["langs-column"]}>
+                        <div className={homeStyle["langs-row-1"]}>
+                            <div className={homeStyle["langs-lang"]}>
+                                <Image src={langNextImage} />
+                            </div>
+                            <div className={homeStyle["langs-lang"]}>
+                                <Image src={langSassImage} />
+                            </div>
+                        </div>
+                        <div className={homeStyle["langs-row-2"]}>
+                            <div className={homeStyle["langs-lang"]}>
+                                <Image src={langReactImage} />
+                            </div>
+                            <div className={homeStyle["langs-lang"]}>
+                                <Image src={langCppImage} />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button className={homeStyle["continue-button"]} onClick={() => router.push("/langs")}>
+                            See all
+                        </button>
+                    </div>
+                </div>
             </section>
         );
     }
@@ -99,16 +145,12 @@ export default function Home() {
                 </div>
                 <div className={homeStyle["work-grid-container"]}>
                     <div className={homeStyle["work-grid"]}>
-                        {contacts.map(contact => {
-                            return (
-                                <Link href={`/work/${contact.id}`}>
-                                    <a className={homeStyle["work-card"]}>
-                                        <h3>{contact.name}</h3>
-                                        <p>{contact.type}</p>
-                                    </a>
-                                </Link>
-                            )
-                        })}
+                        {contacts.map(contact =>
+                            <a className={homeStyle["work-card"]} key={contact.id} href={contact.url} target="_blank" rel="noreferrer">
+                                <h3>{contact.name}</h3>
+                                <p>{contact.type}</p>
+                            </a>
+                        )}
                     </div>
                 </div>
                 <div>
@@ -143,16 +185,8 @@ export default function Home() {
         <main>
             {renderTitleSect()}
             {renderWorkSect(works)}
-            {renderLangsSect([
-                { name: "HTML", img: "", id: "0" },
-                { name: "Sass", img: "", id: "1" },
-                { name: "JavaScript", img: "", id: "2" },
-                { name: "React", img: "", id: "3" },
-                { name: "NextJS", img: "", id: "4" }
-            ])}
-            {renderContactSect([
-                { type: "LinkedIn", name: "Siravit Phokeed", url: "https://www.linkedin.com/in/siravit-phokeed-2a8904211/", id: "0" }
-            ])}
+            {renderLangsSect()}
+            {renderContactSect(contacts)}
         </main>
     );
 }

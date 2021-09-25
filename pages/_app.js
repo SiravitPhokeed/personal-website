@@ -1,6 +1,7 @@
 // Global style sheet import
 import "../styles/base/reset.scss";
 import "../styles/base/typography.scss";
+import "../styles/components/grid.scss";
 import "../styles/layout/menu.scss";
 import "../styles/utils/markdown.scss";
 

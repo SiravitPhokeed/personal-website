@@ -27,6 +27,7 @@
 }
 
 .title-header {
+    @include a.float-right();
     grid-area: header;
     display: flex;
     flex-direction: column;
@@ -53,17 +54,77 @@
     gap: 0.5rem;
 }
 
-.title-image {
+.title-background {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
     height: 100vh;
     width: 100%;
     max-width: 30rem;
     background-image: url("../../public/index-background.svg");
+    background-position: center left;
     background-repeat: no-repeat;
     background-size: auto 100%;
     &-container {
         grid-area: image;
         display: flex;
         justify-content: flex-end;
+    }
+    img {
+        @include a.float-up();
+    }
+}
+
+.laptop-container {
+    @include a.float-left();
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: absolute;
+    right: 12rem;
+    bottom: 5rem;
+    .laptop-screen {
+        position: relative;
+        width: 14rem;
+        height: fit-content;
+        padding: 0.3rem;
+        border-radius: 1rem;
+        box-shadow: 0 0.2rem 0.5rem p.$shadow;
+        background: p.$card;
+        &-inner {
+            border-radius: 1rem;
+        }
+    }
+    .laptop-keyboard {
+        position: relative;
+        left: 2rem;
+        width: 14rem;
+        height: 4rem;
+        border-radius: 1rem;
+        background: p.$secondary;
+        box-shadow: 0 0.2rem 0.5rem p.$shadow;
+        transform: skew(45deg);
+    }
+    .laptop-keyboard-content {
+        position: absolute;
+        bottom: 1.25rem;
+        z-index: 4;
+        > h3 {
+            position: relative;
+            left: 2.75rem;
+            font-size: 1.1rem;
+            color: p.$text-primary;
+        }
+        > a {
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+            position: relative;
+            left: 3.5rem;
+            font-size: 0.8rem;
+            color: p.$text-primary;
+        }
     }
 }
 
@@ -136,6 +197,52 @@
     min-height: calc(100vh - 2.75rem);
     border-top: 1rem solid p.$text-primary;
     background: linear-gradient(315deg, p.$accent, p.$tertiary);
+}
+
+.langs-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 8.5rem);
+    background-image: url("../../public/index-looking-up.png");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: auto 80%;
+}
+
+.langs-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.langs-row {
+    display: flex;
+    flex-direction: row;
+    &-0 {
+        @extend .langs-row;
+        gap: 2rem;
+    }
+    &-1 {
+        @extend .langs-row;
+        gap: 8rem;
+    }
+    &-2 {
+        @extend .langs-row;
+        gap: 16rem;
+    }
+}
+
+.langs-lang {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 5rem;
+    background: p.$card;
 }
 
 // Get in touch
