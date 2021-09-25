@@ -94,7 +94,7 @@ export default function Home() {
                     {renderWorks(works)}
                 </div>
                 <div className={homeStyle["continue-container"]}>
-                    <button className={homeStyle["continue-button"]} onClick={() => router.push("/work/all")}>
+                    <button className={homeStyle["continue-button"]} onClick={() => router.push("/work?type=all")}>
                         See all
                     </button>
                 </div>
