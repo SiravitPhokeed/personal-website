@@ -54,12 +54,17 @@
 }
 
 .title-image {
-    grid-area: image;
     height: 100vh;
     width: 100%;
+    max-width: 30rem;
     background-image: url("../../public/index-background.svg");
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: auto 100%;
+    &-container {
+        grid-area: image;
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 
 .continue-container {

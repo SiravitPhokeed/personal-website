@@ -33,7 +33,10 @@ export default function Home() {
                         </button>
                     </div>
                 </header>
-                <div className={homeStyle["title-image"]} />
+                <div className={homeStyle["title-image-container"]}>
+                    <div className={homeStyle["title-image"]}>
+                    </div>
+                </div>
             </section>
         );
     }
