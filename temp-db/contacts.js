@@ -12,9 +12,21 @@ export let contacts = [
         id: "1"
     },
     {
+        type: "Line",
+        name: "siravitphokeed-sk",
+        url: "https://line.me",
+        id: "2"
+    },
+    {
+        type: "Email",
+        name: "siravitsasa@gmail.com",
+        url: "mailto:siravitsasa@gmail.com",
+        id: "3"
+    },
+    {
         type: "GitHub",
         name: "SiravitPhokeed",
         url: "https://github.com/SiravitPhokeed",
-        id: "2"
+        id: "3"
     }
 ];

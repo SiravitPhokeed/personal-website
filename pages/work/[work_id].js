@@ -29,9 +29,7 @@ export default function Work({ work_id }) {
 
     function renderImage() {
         return (
-            <div className={workStyle["image"]}>
-                Image
-            </div>
+            <div className={workStyle["image"]} />
         )
     }
 

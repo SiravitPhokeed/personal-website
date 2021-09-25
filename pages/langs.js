@@ -8,7 +8,7 @@ export default function All() {
     return (
         <div className={langStyle["main"]}>
             <header className={langStyle["header"]}>
-                <h1>Languages I’ve used</h1>
+                <h1>Languages I use</h1>
             </header>
             <main className={langStyle["content"]}>
                 <div className="grid">

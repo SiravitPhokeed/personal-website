@@ -182,7 +182,7 @@ export default function Home() {
     }
 
     return (
-        <main>
+        <main className={homeStyle["main"]}>
             {renderTitleSect()}
             {renderWorkSect(works)}
             {renderLangsSect()}
