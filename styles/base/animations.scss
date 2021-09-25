@@ -1,7 +1,105 @@
 @use "../abstracts/palette.scss" as p;
 
+$animation-speed: 0.25s;
+
+@keyframes fade-in {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0.5rem);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes float-down {
+    0% {
+        transform: translateY(-0.5rem);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes float-left {
+    0% {
+        transform: translateX(0.5rem);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes float-right {
+    0% {
+        transform: translateX(-0.5rem);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes float-down-up {
+    0% {
+        transform: translateY(-0.5rem) scale(0.8);
+        opacity: 0%;
+    }
+    15% {
+        transform: translateY(0) scale(1);
+        opacity: 100%;
+    }
+    85% {
+        transform: translateY(0) scale(1);
+        opacity: 100%;
+    }
+    100% {
+        transform: translateY(-0.5rem) scale(0.8);
+        opacity: 0%;
+    }
+}
+
+@mixin fade-in() {
+    animation: fade-in $animation-speed 1;
+}
+
+@mixin float-up() {
+    animation: float-up $animation-speed 1;
+}
+
+@mixin float-down() {
+    animation: float-down $animation-speed 1;
+}
+
+@mixin float-left() {
+    animation: float-left $animation-speed 1;
+}
+
+@mixin float-right() {
+    animation: float-right $animation-speed 1;
+}
+
+@mixin float-down-up() {
+    animation: float-down-up 2s 1;
+}
+
 @mixin animatable() {
-    transition: all 0.25s ease;
+    transition: all $animation-speed ease;
 }
 
 @mixin clicky() {

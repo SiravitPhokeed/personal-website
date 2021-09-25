@@ -1,0 +1,44 @@
+@use "../abstracts/palette.scss" as p;
+@use "../base/animations.scss" as a;
+
+.header {
+    text-align: center;
+    padding: 5rem 1rem;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0.75rem;
+    background:  p.$primary;
+    > a {
+        color: p.$text-primary;
+    }
+    > .activated {
+        font-weight: 800;
+    }
+}
+
+.content {
+    @include a.float-up();
+    min-height: calc(100vh - 14.4rem);
+    padding: 1rem 3rem;
+    background: linear-gradient(45deg, p.$primary, p.$tertiary);
+}
+
+.work-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    > .work-type {
+        width: fit-content;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+        color: p.$text-primary;
+        background: p.$primary;
+    }
+}

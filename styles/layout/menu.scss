@@ -1,9 +1,19 @@
 @use "../abstracts/palette.scss" as p;
 
 .menu {
-    width: calc(100vw - 2rem);
-    padding: 0.6rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+    width: calc(100vw - 6rem);
+    padding: 0.6rem 3rem;
     position: fixed;
     z-index: 5;
     background: p.$card-translucent;
+    > a {
+        color: p.$text-secondary;
+    }
+    > .activated {
+        font-weight: 800;
+    }
 }

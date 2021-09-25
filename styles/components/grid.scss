@@ -1,0 +1,30 @@
+@use "../abstracts/palette.scss" as p;
+@use "../base/animations.scss" as a;
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 0.8rem;
+    margin: 1rem;
+    &-container {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        padding-right: 0.3rem;
+        height: calc(100vh - 15.5rem);
+        overflow: hidden scroll;
+    }
+}
+
+.grid > .card {
+    @include a.clicky-scale-up(1.05);
+    min-width: fit-content;
+    font-size: 0.8rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: p.$text-secondary;
+    background: p.$card;
+    &:hover {
+        padding: 1.1rem;
+    }
+}

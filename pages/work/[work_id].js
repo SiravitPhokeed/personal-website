@@ -29,9 +29,7 @@ export default function Work({ work_id }) {
 
     function renderImage() {
         return (
-            <div className={workStyle["image"]}>
-                Image
-            </div>
+            <div className={workStyle["image"]} />
         )
     }
 
@@ -52,7 +50,7 @@ export default function Work({ work_id }) {
                     </h2>
                     <div className={workStyle["link-container"]}>
                         {work.links.map(link =>
-                            <a key={link.url} href={link.url} className={workStyle["link"]} target="_blank">
+                            <a key={link.url} href={link.url} className={workStyle["link"]} target="_blank" rel="noreferrer">
                                 {link.name}<MdLaunch />
                             </a>
                         )}

@@ -8,6 +8,7 @@ export let works = [
         links: [
             { name: "GitHub", url: "https://github.com/Emocial-NLP-Depression-Detection/Emocial-Frontend"}
         ],
+        uses: ["React", "CSS"],
         readme: "https://raw.githubusercontent.com/Emocial-NLP-Depression-Detection/Emocial-Frontend/master/README.md"
     },
     {
@@ -33,5 +34,16 @@ export let works = [
             { name: "Information", url: "https://ramathibodi-rpc.org/"}
         ],
         readme: null
+    },
+    {
+        id: "3",
+        name: "This Website!",
+        desc: "Understand my coding style by looking at the inner workings of this website",
+        fullDesc: "Welcome to my personal website! You probably came here to look at how I wrote it up, which you can do by accessing the GitHub link below.",
+        type: "project",
+        links: [
+            { name: "GitHub", url: "https://github.com/SiravitPhokeed/personal-website/" }
+        ],
+        readme: "https://raw.githubusercontent.com/SiravitPhokeed/personal-website/main/README.md"
     },
 ];

@@ -1,0 +1,14 @@
+@use "../abstracts/palette.scss" as p;
+@use "../base/animations.scss" as a;
+
+.header {
+    text-align: center;
+    padding: 5rem 1rem;
+}
+
+.content {
+    @include a.float-up();
+    min-height: calc(100vh - 14.4rem);
+    padding: 1rem 3rem;
+    background: linear-gradient(45deg, p.$primary, p.$tertiary);
+}
