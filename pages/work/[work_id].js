@@ -4,7 +4,7 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 // Icon import
-import { MdLaunch } from "react-icons/md";
+import { MdImage, MdLaunch } from "react-icons/md";
 
 // Style sheet import
 import workStyle from "../../styles/pages/work.module.scss";
@@ -29,7 +29,9 @@ export default function Work({ work_id }) {
 
     function renderImage() {
         return (
-            <div className={workStyle["image"]} />
+            <div className={workStyle["image"]}>
+                <MdImage />{work.work.name}
+            </div>
         )
     }
 
