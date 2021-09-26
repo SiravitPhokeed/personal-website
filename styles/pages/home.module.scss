@@ -145,7 +145,7 @@
 
 // Stuff I've worked on
 .work-section {
-    min-height: calc(100vh - 2.75rem);
+    min-height: 100vh;
     border-top: 1rem solid p.$text-primary;
     background: linear-gradient(315deg, p.$tertiary, p.$primary);
 }
@@ -195,7 +195,7 @@
 
 // I'm also comfortable with…
 .langs-section {
-    min-height: calc(100vh - 2.75rem);
+    min-height: 100vh;
     border-top: 1rem solid p.$text-primary;
     background: linear-gradient(315deg, p.$accent, p.$tertiary);
 }
@@ -253,8 +253,9 @@
 .contact-fieldset {
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    flex-wrap: wrap;
     gap: 2rem;
+    padding: 1rem;
     input {
         display: block;
         width: calc(100% - 2rem);
