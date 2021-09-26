@@ -28,9 +28,13 @@ export default function Works() {
 
     function renderWorksGrid(works) {
         let type = router.query.type || "all";
+        let uses = router.query.uses;
         let filterred_works = [];
+        
         if (type === "all")
             filterred_works = works;
+        else if (uses)
+            filterred_works = works.filter(work => work.type === type && work.uses.filter(lang => lang.name === uses).length > 0);
         else
             filterred_works = works.filter(work => work.type === type);
 
