@@ -17,8 +17,8 @@ export default function Works() {
                 <span className={worksStyle["work-type"]}>
                     {`${type[0].toUpperCase()}${type.slice(1)}`}
                 </span>
-                {uses.filter(lang => lang.main).map(lang =>
-                    <li className={worksStyle["work-lang"]}>
+                {uses.filter(lang => lang.main).map((lang, index) =>
+                    <li key={index} className={worksStyle["work-lang"]}>
                         {lang.name}
                     </li>
                 )}
@@ -28,9 +28,13 @@ export default function Works() {
 
     function renderWorksGrid(works) {
         let type = router.query.type || "all";
+        let uses = router.query.uses;
         let filterred_works = [];
+        
         if (type === "all")
             filterred_works = works;
+        else if (uses)
+            filterred_works = works.filter(work => work.type === type && work.uses.filter(lang => lang.name === uses).length > 0);
         else
             filterred_works = works.filter(work => work.type === type);
 
@@ -58,7 +62,7 @@ export default function Works() {
             <>
                 {pages.map((page, index) =>
                     <Link key={index} href={page.url}>
-                        <a className={router.asPath === page.url ? worksStyle["activated"] : null}>
+                        <a className={router.query.type === page.query ? worksStyle["activated"] : null}>
                             {page.name}
                         </a>
                     </Link>
@@ -74,9 +78,9 @@ export default function Works() {
             </header>
             <nav className={worksStyle["navigation"]}>
                 {renderMenuItems([
-                    { name: "All", url: "/work?type=all" },
-                    { name: "Projects", url: "/work?type=project" },
-                    { name: "Certificates", url: "/work?type=certificate" },
+                    { name: "All", query: "all", url: "/work?type=all" },
+                    { name: "Projects", query: "project", url: "/work?type=project" },
+                    { name: "Certificates", query: "certificate", url: "/work?type=certificate" },
                 ])}
             </nav>
             <main className={worksStyle["content"]}>

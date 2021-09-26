@@ -45,24 +45,6 @@ fieldset {
     border: none;
 }
 
-// Scrollbar styling
-::-webkit-scrollbar {
-    width: 0.3rem;
-    height: 0.3rem;
-    z-index: -1;
-    position: relative;
-}
-
-::-webkit-scrollbar-track {
-    background-color: p.$field;
-    border-radius: 0.5rem;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: p.$tertiary; 
-    border-radius: 0.5rem;
-}
-
 // Media queries
 @media only screen and (orientation: portrait) {
     :root {

@@ -7,5 +7,4 @@ export let langs = [
     { name: "NextJS", id: "5" },
     { name: "Python", id: "6" },
     { name: "C", id: "7" },
-    { name: "C++", id: "8" },
 ]

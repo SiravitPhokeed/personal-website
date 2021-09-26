@@ -17,8 +17,8 @@ export default function All() {
             <main className={langStyle["content"]}>
                 <div className="grid">
                     {langs.map(lang =>
-                        <Link href={`/work?type=project&uses=${lang.name}`}>
-                            <a key={lang.id} className="card">
+                        <Link key={lang.id} href={`/work?type=project&uses=${lang.name}`}>
+                            <a className="card">
                                 <h3>{lang.name}</h3>
                             </a>
                         </Link>

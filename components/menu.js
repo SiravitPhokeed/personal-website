@@ -24,7 +24,7 @@ export function Menu() {
             {renderMenuItems([
                 { name: "Home", url: "/" },
                 { name: "Portfolio", url: "/work?type=all" },
-                { name: "Certificates", url: "/work?type=certificate" },
+                { name: "Languages", url: "/langs" },
                 { name: "Contact", url: "/#contact" }
             ])}
         </nav>
