@@ -137,6 +137,7 @@
 
 .continue-button {
     @include cb.button(p.$accent, p.$text-accent, 1.3rem);
+    border: solid 0.2rem p.$primary;
 }
 
 .secondary-button {
@@ -273,10 +274,11 @@
 }
 
 .contact-textarea {
-    width: calc(100% - 2rem);
+    resize: none;
+    width: calc(100% - 2.5rem);
     height: 8rem;
     margin: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
 }
 
 .send-container {
@@ -287,4 +289,5 @@
 
 .send-button {
     @include cb.button(p.$accent, p.$text-accent, 1.2rem);
+    border: solid 0.2rem p.$primary;
 }

@@ -36,7 +36,7 @@ export default function Work({ work_id }) {
     function renderContent(work) {
         return (
             <div className={workStyle["content"]}>
-                <section className={workStyle["brief-section", "section"]}>
+                <section className={workStyle["section"]}>
                     <h1>
                         {work.name}
                     </h1>
@@ -44,7 +44,17 @@ export default function Work({ work_id }) {
                         {work.fullDesc}
                     </p>
                 </section>
-                <section className={workStyle["link-section", "section"]}>
+                {work.type === "project" ? <section className={workStyle["section"]}>
+                    <h2>Languages this project uses</h2>
+                    <ul className={workStyle["lang-container"]}>
+                        {work.uses.map((lang, index) =>
+                            <li key={index} className={workStyle[`lang-main-${lang.main}`]}>
+                                {lang.name}
+                            </li>
+                        )}
+                    </ul>
+                </section> : null}
+                <section className={workStyle["section"]}>
                     <h2>
                         Find this {work.type}
                     </h2>
@@ -56,7 +66,7 @@ export default function Work({ work_id }) {
                         )}
                     </div>
                 </section>
-                {work.type === "project" ? <section className={workStyle["readme-section", "section"]}>
+                {work.type === "project" ? <section className={workStyle["section"]}>
                     <h2>GitHub Readme</h2>
                     <ReactMarkdown className={`markdown ${workStyle["readme-markdown"]}`}>{readme.readme}</ReactMarkdown>
                 </section> : null}

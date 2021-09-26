@@ -32,13 +32,28 @@
 
 .link {
     @include a.clicky();
+    @extend .lang;
+    background: p.$secondary;
+    &-container {
+        @extend .lang-container;
+    }
+}
+
+.lang {
     display: inline-flex;
     align-items: center;
     gap: 0.2rem;
     padding: 0.2rem 0.5rem;
     border-radius: 1rem;
     color: p.$text-primary;
-    background: p.$secondary;
+    &-main-true {
+        @extend .lang;
+        background: p.$secondary;
+    }
+    &-main-false {
+        @extend .lang;
+        background: p.$tertiary;
+    }
     &-container {
         display: flex;
         flex-direction: row;

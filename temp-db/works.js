@@ -8,7 +8,12 @@ export let works = [
         links: [
             { name: "GitHub", url: "https://github.com/Emocial-NLP-Depression-Detection/Emocial-Frontend"}
         ],
-        uses: ["React", "CSS"],
+        uses: [
+            { name: "React", main: true },
+            { name: "CSS", main: true },
+            { name: "HTML", main: false },
+            { name: "JavaScript", main: false }
+        ],
         readme: "https://raw.githubusercontent.com/Emocial-NLP-Depression-Detection/Emocial-Frontend/master/README.md"
     },
     {
@@ -44,7 +49,13 @@ export let works = [
         links: [
             { name: "GitHub", url: "https://github.com/SiravitPhokeed/personal-website/" }
         ],
-        uses: ["React", "NextJS", "Sass"],
+        uses: [
+            { name: "React", main: true },
+            { name: "NextJS", main: true },
+            { name: "Sass", main: true },
+            { name: "HTML", main: false },
+            { name: "JavaScript", main: false }
+        ],
         readme: "https://raw.githubusercontent.com/SiravitPhokeed/personal-website/main/README.md"
     },
 ];

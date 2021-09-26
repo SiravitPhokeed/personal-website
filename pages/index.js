@@ -165,10 +165,10 @@ export default function Home() {
             <fieldset className={homeStyle["contact-fieldset"]}>
                 <div className={homeStyle["contact-left"]}>
                     <div className={homeStyle["contact-inputset"]}>
-                        <input placeholder="John Doe" />
-                        <input placeholder="johndoe@example.com" />
+                        <input type="text" placeholder="John Doe" />
+                        <input type="email" placeholder="johndoe@example.com" />
                     </div>
-                    <input className={homeStyle["contact-title"]} placeholder="I’d like to contact you about this" />
+                    <input type="text" className={homeStyle["contact-title"]} placeholder="I’d like to contact you about this" />
                 </div>
                 <div className={homeStyle["contact-right"]}>
                     <textarea className={homeStyle["contact-textarea"]}

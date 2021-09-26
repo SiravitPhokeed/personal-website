@@ -2,6 +2,7 @@
 import Head from "next/head";
 
 // Global style sheet import
+import "../styles/base/global.scss";
 import "../styles/base/reset.scss";
 import "../styles/base/typography.scss";
 import "../styles/components/grid.scss";
