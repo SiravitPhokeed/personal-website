@@ -43,10 +43,10 @@ export default function Home() {
                 <div className={homeStyle["title-background-container"]}>
                     <div className={homeStyle["title-background"]}>
                         <div className={homeStyle["title-image"]}>
-                            <Image src={holdingImage} width="526" height="612" />
+                            <Image src={holdingImage} width="526" height="612" alt="Siravit Phokeed holding up a laptop showcasing his computer progamming projects" />
                             <div className={homeStyle["laptop-container"]}>
                                 <div className={homeStyle["laptop-screen"]}>
-                                    <Image src={emocialImage} objectFit="contain" className={homeStyle["laptop-screen-inner"]} />
+                                    <Image src={emocialImage} objectFit="contain" className={homeStyle["laptop-screen-inner"]} alt="A laptop cycling through Siravit Phokeed's computer progamming projects" />
                                 </div>
                                 <div className={homeStyle["laptop-keyboard"]} />
                                 <div className={homeStyle["laptop-keyboard-content"]}>
@@ -112,18 +112,18 @@ export default function Home() {
                     <div className={homeStyle["langs-column"]}>
                         <div className={homeStyle["langs-row-1"]}>
                             <div className={homeStyle["langs-lang"]}>
-                                <Image src={langNextImage} />
+                                <Image src={langNextImage} alt="Next JS" />
                             </div>
                             <div className={homeStyle["langs-lang"]}>
-                                <Image src={langSassImage} />
+                                <Image src={langSassImage} alt="Sass" />
                             </div>
                         </div>
                         <div className={homeStyle["langs-row-2"]}>
                             <div className={homeStyle["langs-lang"]}>
-                                <Image src={langReactImage} />
+                                <Image src={langReactImage} alt="React JS" />
                             </div>
                             <div className={homeStyle["langs-lang"]}>
-                                <Image src={langCppImage} />
+                                <Image src={langCppImage} alt="C++" />
                             </div>
                         </div>
                     </div>
