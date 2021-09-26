@@ -204,7 +204,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 1rem;
     height: calc(100vh - 8.5rem);
     background-image: url("../../public/index-looking-up.png");
     background-position: center bottom;
@@ -288,4 +289,5 @@
 
 .send-button {
     @include cb.button(p.$accent, p.$text-accent, 1.2rem);
+    cursor: not-allowed;
 }

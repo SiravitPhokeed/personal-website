@@ -17,8 +17,8 @@ export default function Works() {
                 <span className={worksStyle["work-type"]}>
                     {`${type[0].toUpperCase()}${type.slice(1)}`}
                 </span>
-                {uses.filter(lang => lang.main).map(lang =>
-                    <li className={worksStyle["work-lang"]}>
+                {uses.filter(lang => lang.main).map((lang, index) =>
+                    <li key={index} className={worksStyle["work-lang"]}>
                         {lang.name}
                     </li>
                 )}
