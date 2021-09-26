@@ -62,7 +62,7 @@ export default function Works() {
             <>
                 {pages.map((page, index) =>
                     <Link key={index} href={page.url}>
-                        <a className={router.asPath === page.url ? worksStyle["activated"] : null}>
+                        <a className={router.query.type === page.query ? worksStyle["activated"] : null}>
                             {page.name}
                         </a>
                     </Link>
@@ -78,9 +78,9 @@ export default function Works() {
             </header>
             <nav className={worksStyle["navigation"]}>
                 {renderMenuItems([
-                    { name: "All", url: "/work?type=all" },
-                    { name: "Projects", url: "/work?type=project" },
-                    { name: "Certificates", url: "/work?type=certificate" },
+                    { name: "All", query: "all", url: "/work?type=all" },
+                    { name: "Projects", query: "project", url: "/work?type=project" },
+                    { name: "Certificates", query: "certificate", url: "/work?type=certificate" },
                 ])}
             </nav>
             <main className={worksStyle["content"]}>
