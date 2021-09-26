@@ -42,7 +42,7 @@ export let works = [
     },
     {
         id: "3",
-        name: "This Website!",
+        name: "Personal Website",
         desc: "Understand my coding style by looking at the inner workings of this website",
         fullDesc: "Welcome to my personal website! You probably came here to look at how I wrote it up, which you can do by accessing the GitHub link below.",
         type: "project",
@@ -57,5 +57,19 @@ export let works = [
             { name: "JavaScript", main: false }
         ],
         readme: "https://raw.githubusercontent.com/SiravitPhokeed/personal-website/main/README.md"
+    },
+    {
+        id: "4",
+        name: "Djikstra Algorithm",
+        desc: "An attempt at implementing the Djikstra Algorithm in C++",
+        fullDesc: "An attempt to gain more understanding of the Djikstra Algorithm by implementing it in code form via C++.",
+        type: "project",
+        links: [
+            { name: "GitHub", url: "https://github.com/SiravitPhokeed/dijkstra-algorithm" }
+        ],
+        uses: [
+            { name: "C", main: true }
+        ],
+        readme: "https://raw.githubusercontent.com/SiravitPhokeed//dijkstra-algorithm/master/README.md"
     },
 ];
