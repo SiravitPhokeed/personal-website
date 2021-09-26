@@ -29,7 +29,9 @@ export default function Home() {
                 <header className={homeStyle["title-header"]}>
                     <div className={homeStyle["title-text"]}>
                         <h1 className={homeStyle["title"]}>Hi, I’m Siravit P!</h1>
-                        <p className={homeStyle["subtitle"]}>Front-end web developer and designer working primarily with React</p>
+                        <p className={homeStyle["subtitle"]}>
+                            I’m a high school student at Suankularb Wittayalai School that has fallen in love with web development and design, particulary with React.
+                        </p>
                     </div>
                     <div className={homeStyle["title-buttons"]}>
                         <button className={homeStyle["continue-button"]} onClick={() => router.push("#contact")}>
