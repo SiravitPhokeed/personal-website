@@ -23,8 +23,9 @@ export function Menu() {
         <nav className="menu">
             {renderMenuItems([
                 { name: "Home", url: "/" },
+                { name: "About", url: "/about" },
                 { name: "Portfolio", url: "/work?type=all" },
-                { name: "Languages", url: "/langs" },
+                { name: "Skills", url: "/langs" },
                 { name: "Contact", url: "/#contact" }
             ])}
         </nav>
