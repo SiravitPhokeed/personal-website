@@ -44,6 +44,7 @@ export let works = [
         links: [
             { name: "GitHub", url: "https://github.com/SiravitPhokeed/personal-website/" }
         ],
+        uses: ["React", "NextJS", "Sass"],
         readme: "https://raw.githubusercontent.com/SiravitPhokeed/personal-website/main/README.md"
     },
 ];

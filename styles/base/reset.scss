@@ -62,3 +62,10 @@ fieldset {
     background-color: p.$tertiary; 
     border-radius: 0.5rem;
 }
+
+// Media queries
+@media only screen and (orientation: portrait) {
+    :root {
+        font-size: 14px;
+    }
+}

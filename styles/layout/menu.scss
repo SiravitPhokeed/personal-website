@@ -1,4 +1,5 @@
 @use "../abstracts/palette.scss" as p;
+@use "../base/animations.scss" as a;
 
 .menu {
     display: flex;
@@ -11,6 +12,7 @@
     z-index: 5;
     background: p.$card-translucent;
     > a {
+        @include a.animatable();
         color: p.$text-secondary;
     }
     > .activated {

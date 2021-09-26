@@ -4,7 +4,6 @@ import Link from "next/link";
 
 export function Menu() {
     const router = useRouter();
-    console.log(router.asPath);
 
     function renderMenuItems(pages) {
         return (
@@ -24,7 +23,7 @@ export function Menu() {
         <nav className="menu">
             {renderMenuItems([
                 { name: "Home", url: "/" },
-                { name: "Projects", url: "/work?type=project" },
+                { name: "Portfolio", url: "/work?type=all" },
                 { name: "Certificates", url: "/work?type=certificate" },
                 { name: "Contact", url: "/#contact" }
             ])}

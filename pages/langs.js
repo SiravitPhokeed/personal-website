@@ -9,6 +9,7 @@ export default function All() {
         <div className={langStyle["main"]}>
             <header className={langStyle["header"]}>
                 <h1>Languages I use</h1>
+                <p><strong>Tip</strong>: Click on a language to filter my projects by language!</p>
             </header>
             <main className={langStyle["content"]}>
                 <div className="grid">

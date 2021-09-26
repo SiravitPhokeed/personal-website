@@ -51,6 +51,7 @@
 .title-buttons {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
@@ -220,17 +221,13 @@
 .langs-row {
     display: flex;
     flex-direction: row;
-    &-0 {
-        @extend .langs-row;
-        gap: 2rem;
-    }
     &-1 {
         @extend .langs-row;
-        gap: 8rem;
+        gap: 30vh;
     }
     &-2 {
         @extend .langs-row;
-        gap: 16rem;
+        gap: 50vh;
     }
 }
 
