@@ -11,6 +11,21 @@ import { works } from "../temp-db/works";
 export default function Works() {
     const router = useRouter();
 
+    function renderWorkLangs(type, uses) {
+        return (
+            <ul className={worksStyle["work-uses"]}>
+                <span className={worksStyle["work-type"]}>
+                    {`${type[0].toUpperCase()}${type.slice(1)}`}
+                </span>
+                {uses.map(lang =>
+                    <li className={worksStyle["work-lang"]}>
+                        {lang}
+                    </li>
+                )}
+            </ul>
+        )
+    }
+
     function renderWorksGrid(works) {
         let type = router.query.type || "all";
         let filterred_works = [];
@@ -29,9 +44,7 @@ export default function Works() {
                                     <h3>{work.name}</h3>
                                     <p>{work.desc}</p>
                                 </div>
-                                <span className={worksStyle["work-type"]}>
-                                    {`${work.type[0].toUpperCase()}${work.type.slice(1)}`}
-                                </span>
+                                {renderWorkLangs(work.type, work.uses || [])}
                             </div>
                         </a>
                     </Link>

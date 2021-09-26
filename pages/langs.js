@@ -1,3 +1,6 @@
+// ReactJS import
+import Link from "next/link";
+
 // Style sheet import
 import langStyle from "../styles/pages/langs.module.scss";
 
@@ -14,9 +17,11 @@ export default function All() {
             <main className={langStyle["content"]}>
                 <div className="grid">
                     {langs.map(lang =>
-                        <div key={lang.id} className="card">
-                            <h3>{lang.name}</h3>
-                        </div>
+                        <Link href={`/work?type=project&uses=${lang.name}`}>
+                            <a key={lang.id} className="card">
+                                <h3>{lang.name}</h3>
+                            </a>
+                        </Link>
                     )}
                 </div>
             </main>
