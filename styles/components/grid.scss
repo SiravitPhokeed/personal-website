@@ -16,7 +16,7 @@
     }
 }
 
-.grid > .card {
+.card {
     @include a.clicky-scale-up(1.05);
     min-width: fit-content;
     font-size: 0.8rem;

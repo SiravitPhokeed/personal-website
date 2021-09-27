@@ -1,11 +1,12 @@
 @use "../abstracts/palette.scss" as p;
+@use "../base/animations.scss" as a;
 
 .main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding: 4rem 2rem;
-    height: calc(100vh - 8rem);
+    min-height: calc(100vh - 8rem);
     background: linear-gradient(45deg, p.$primary, p.$accent);
 }
 
@@ -22,7 +23,37 @@
 }
 
 .content-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     padding: 1rem;
     border-radius: 1rem;
     background: p.$card-translucent;
+}
+
+// Education
+.edu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+// How I Code
+.how-link {
+    @include a.clicky();
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.6rem;
+    color: p.$primary;
+    background: p.$card;
+}
+
+// Media queries
+@media only screen and (orientation: portrait) {
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
 }
