@@ -81,6 +81,7 @@ export default function Works() {
                     { name: "All", query: "all", url: "/work?type=all" },
                     { name: "Projects", query: "project", url: "/work?type=project" },
                     { name: "Certificates", query: "certificate", url: "/work?type=certificate" },
+                    { name: "Activities", query: "activity", url: "/work?type=activity" },
                 ])}
             </nav>
             <main className={worksStyle["content"]}>
