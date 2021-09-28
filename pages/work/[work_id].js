@@ -35,8 +35,8 @@ export default function Work({ work_id }) {
         return (
             <div className={workStyle["image"]}>
                 {type === "certificate"
-                ? <Image src={certificateImage} />
-                : <Image src={projectImage} />}
+                ? <Image src={certificateImage} alt="Certificate clipart" />
+                : <Image src={projectImage} alt="Project clipart" />}
             </div>
         )
     }

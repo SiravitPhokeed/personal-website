@@ -28,7 +28,7 @@ export default function About() {
                     <h2>Education</h2>
                     <div className={aboutStyle["edu-grid"]}>
                         {about.education.map(school => 
-                            <a href={school.url} className="card" target="_blank" rel="noreferrer">
+                            <a key={school.id} href={school.url} className="card" target="_blank" rel="noreferrer">
                                 <h3>{school.name}</h3>
                                 <p><strong>Year:</strong> {school.yearBE} / {school.yearAD}</p>
                                 <p><strong>Level:</strong> {school.level}</p>
