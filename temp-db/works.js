@@ -72,4 +72,15 @@ export let works = [
         ],
         readme: "https://raw.githubusercontent.com/SiravitPhokeed//dijkstra-algorithm/master/README.md"
     },
+    {
+        id: "5",
+        name: "Minesweeper Robot Camp",
+        desc: "Learn about military uses of robots and make a minesweeper robot from scratch with the EOD team",
+        fullDesc: "Mahidol University, in cooperation with the Defence Technology Institute, organized this camp to educate about military uses of robots with the goal as making a minesweeper robot from scratch.",
+        type: "activity",
+        links: [
+            { name: "Information", url: "https://il.mahidol.ac.th/th/minesweeper-robot-camp-62/" },
+            { name: "Passed Teams Announcement", url: "https://il.mahidol.ac.th/th/minesweeper-robot-camp-team-announce/" }
+        ]
+    }
 ];
