@@ -51,3 +51,9 @@ fieldset {
         font-size: 14px;
     }
 }
+
+@media only screen and (min-aspect-ratio: 16 / 7) {
+    :root {
+        font-size: 14px;
+    }
+}

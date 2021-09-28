@@ -115,6 +115,18 @@ $animation-speed: 0.25s;
     }
 }
 
+@mixin clicky-no-shadow() {
+    @include animatable();
+    cursor: pointer;
+    &:hover {
+        opacity: 80%;
+    }
+    &:active {
+        transition: none;
+        transform: translateY(0.1rem);
+    }
+}
+
 @mixin clicky-scale-up($scale) {
     @include animatable();
     cursor: pointer;

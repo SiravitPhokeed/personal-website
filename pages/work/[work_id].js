@@ -1,10 +1,14 @@
 // ReactJS import
-import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 // Icon import
 import { MdImage, MdLaunch } from "react-icons/md";
+
+// Photos import
+import certificateImage from "../../public/work-certificate.png";
+import projectImage from "../../public/work-project.png";
 
 // Style sheet import
 import workStyle from "../../styles/pages/work.module.scss";
@@ -27,10 +31,12 @@ export default function Work({ work_id }) {
         work: works.filter(work => work.id === work_id)[0]
     })
 
-    function renderImage() {
+    function renderImage(type) {
         return (
             <div className={workStyle["image"]}>
-                <MdImage />{work.work.name}
+                {type === "certificate"
+                ? <Image src={certificateImage} alt="Certificate clipart" />
+                : <Image src={projectImage} alt="Project clipart" />}
             </div>
         )
     }
@@ -88,7 +94,7 @@ export default function Work({ work_id }) {
 
     return (
         <main className={workStyle["work-grid"]}>
-            {renderImage()}
+            {renderImage(work.work.type)}
             {renderContent(work.work)}
         </main>
     )

@@ -1,0 +1,56 @@
+@use "../abstracts/palette.scss" as p;
+@use "../base/animations.scss" as a;
+
+.laptop-container {
+    @include a.float-left();
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: absolute;
+    right: 12rem;
+    bottom: 5rem;
+}
+
+.laptop-screen {
+    position: relative;
+    width: 14rem;
+    height: fit-content;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.2rem 0.5rem p.$shadow;
+    background: p.$card;
+    &-inner {
+        border-radius: 1rem;
+    }
+}
+
+.laptop-keyboard {
+    position: relative;
+    left: 2rem;
+    width: 14rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background: p.$secondary;
+    box-shadow: 0 0.2rem 0.5rem p.$shadow;
+    transform: skew(45deg);
+}
+.laptop-keyboard-content {
+    position: absolute;
+    bottom: 1.25rem;
+    z-index: 4;
+    > h3 {
+        position: relative;
+        left: 2.75rem;
+        font-size: 1.1rem;
+        color: p.$text-primary;
+    }
+    > a {
+        display: flex;
+        align-items: center;
+        gap: 0.1rem;
+        position: relative;
+        left: 3.5rem;
+        font-size: 0.8rem;
+        color: p.$text-primary;
+    }
+}

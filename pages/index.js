@@ -1,15 +1,16 @@
 // Modules import
-import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+
+// Components import
+import { Laptop } from "../components/laptop";
 
 // Style sheet import
 import homeStyle from "../styles/pages/home.module.scss";
 
 // Photos import
 import holdingImage from "../public/index-holding.png";
-import emocialImage from "../public/index-emocial.png";
 import langNextImage from "../public/index-lang-next.svg";
 import langReactImage from "../public/index-lang-react.svg";
 import langSassImage from "../public/index-lang-sass.svg";
@@ -18,7 +19,6 @@ import langCppImage from "../public/index-lang-cpp.svg";
 // Temporary database import
 import { works } from "../temp-db/works.js";
 import { contacts } from "../temp-db/contacts";
-import { MdLaunch } from "react-icons/md";
 
 export default function Home() {
     const router = useRouter();
@@ -29,7 +29,9 @@ export default function Home() {
                 <header className={homeStyle["title-header"]}>
                     <div className={homeStyle["title-text"]}>
                         <h1 className={homeStyle["title"]}>Hi, I’m Siravit P!</h1>
-                        <p className={homeStyle["subtitle"]}>Front-end web developer and designer working primarily with React</p>
+                        <p className={homeStyle["subtitle"]}>
+                            I’m a high school student at Suankularb Wittayalai School that has fallen in love with web development and design, particulary with React.
+                        </p>
                     </div>
                     <div className={homeStyle["title-buttons"]}>
                         <button className={homeStyle["continue-button"]} onClick={() => router.push("#contact")}>
@@ -43,18 +45,10 @@ export default function Home() {
                 <div className={homeStyle["title-background-container"]}>
                     <div className={homeStyle["title-background"]}>
                         <div className={homeStyle["title-image"]}>
-                            <Image src={holdingImage} width="526" height="612" alt="Siravit Phokeed holding up a laptop showcasing his computer progamming projects" />
-                            <div className={homeStyle["laptop-container"]}>
-                                <div className={homeStyle["laptop-screen"]}>
-                                    <Image src={emocialImage} objectFit="contain" className={homeStyle["laptop-screen-inner"]} alt="A laptop cycling through Siravit Phokeed's computer progamming projects" />
-                                </div>
-                                <div className={homeStyle["laptop-keyboard"]} />
-                                <div className={homeStyle["laptop-keyboard-content"]}>
-                                    <h3>Emocial</h3>
-                                    <Link href="/work/0"><a>Learn more about this project <MdLaunch /></a></Link>
-                                </div>
-                            </div>
+                            <Image src={holdingImage} layout="fill" objectFit="contain" objectPosition="right bottom"
+                                alt="Siravit Phokeed holding up a laptop showcasing his computer progamming projects" />
                         </div>
+                        <Laptop />
                     </div>
                 </div>
             </section>
