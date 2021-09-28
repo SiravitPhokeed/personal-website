@@ -2,7 +2,7 @@ export let works = [
     {
         id: "0",
         name: "Emocial",
-        desc: "An application to treat lack of cancer",
+        desc: "An application that analyzes short messages for a chance of depression using machine learning",
         fullDesc: "Emocial is an application that analyzes either short messages or questionaire questions for a chance of depression using natural language processing and machine learning.",
         type: "project",
         links: [
@@ -80,7 +80,18 @@ export let works = [
         type: "activity",
         links: [
             { name: "Information", url: "https://il.mahidol.ac.th/th/minesweeper-robot-camp-62/" },
-            { name: "Passed Teams Announcement", url: "https://il.mahidol.ac.th/th/minesweeper-robot-camp-team-announce/" }
+            { name: "Passed Teams", url: "https://il.mahidol.ac.th/th/minesweeper-robot-camp-team-announce/" }
+        ]
+    },
+    {
+        id: "6",
+        name: "Academic Excellence Student Outstanding Academic Performance",
+        desc: "Awarded to students who participated in notable acedemic activities",
+        fullDesc: "An annual certificate awarded to students who participated in notable acedemic activities outside of school, in this case, NSC2021.",
+        type: "certificate",
+        links: [
+            { name: "Certificate", url: "http://mysk.school/th/myCertificate.php/?user=56565&cert_item=3.2&cert_no=107" },
+            { name: "NSC2021", url: "https://www.facebook.com/groups/NSCThailand/" }
         ]
     }
 ];
