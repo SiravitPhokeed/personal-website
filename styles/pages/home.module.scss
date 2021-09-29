@@ -18,10 +18,6 @@
 
 // Hi, I'm Siravit P!
 .title-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "header image";
-    gap: 2rem;
     min-height: 100vh;
     background: linear-gradient(315deg, p.$primary, p.$secondary);
 }
@@ -60,11 +56,7 @@
     justify-content: flex-end;
     align-items: flex-end;
     position: relative;
-    height: 100vh;
     width: 100%;
-    max-width: 30rem;
-    background-image: url("../../public/index-background.svg");
-    background-position: center left;
     background-repeat: no-repeat;
     background-size: auto 100%;
     &-container {
@@ -147,6 +139,9 @@
 
 // I'm also comfortable with…
 .langs-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     min-height: 100vh;
     border-top: 1rem solid p.$text-primary;
     background: linear-gradient(315deg, p.$accent, p.$tertiary);
@@ -158,11 +153,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    height: calc(100vh - 8.5rem);
+    height: calc(100vh - 9rem);
     background-image: url("../../public/index-looking-up.png");
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-size: auto 80%;
 }
 
 .langs-column {
@@ -171,17 +163,10 @@
     align-items: center;
 }
 
-.langs-row {
+.langs-row-1,
+.langs-row-2 {
     display: flex;
     flex-direction: row;
-    &-1 {
-        @extend .langs-row;
-        gap: 30vh;
-    }
-    &-2 {
-        @extend .langs-row;
-        gap: 50vh;
-    }
 }
 
 .langs-lang {
@@ -204,13 +189,14 @@
 
 .contact-fieldset {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
     padding: 1rem;
     input {
         display: block;
-        width: calc(100% - 2rem);
+        width: calc(100% - 3rem);
     }
 }
 
@@ -243,4 +229,86 @@
 .send-button {
     @include cb.button(p.$accent, p.$text-accent, 1.2rem);
     cursor: not-allowed;
+}
+
+// Media queries
+@media only screen and (orientation: portrait) {
+    .title-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .title-background {
+        background-image: url("../../public/index-background-mobile.svg");
+        background-position: bottom right;
+    }
+
+    .langs-main {
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: auto 50%;
+    }
+
+    .langs-column {
+        position: relative;
+        top: 25vh;
+    }
+
+    .langs-row {
+        &-1 {
+            gap: 8vh;
+        }
+        &-2 {
+            gap: 21vh;
+        }
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .title-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "header image";
+        gap: 2rem;
+    }
+
+    .title-background {
+        height: 100vh;
+        max-width: 30rem;
+        background-image: url("../../public/index-background.svg");
+        background-position: center left;
+    }
+
+    .langs-main {
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: auto 80%;
+    }
+
+    .langs-row {
+        &-1 {
+            gap: 30vh;
+        }
+        &-2 {
+            gap: 50vh;
+        }
+    }
+}
+
+@media only screen and (max-aspect-ratio: 4 / 3) {
+    .title-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .title-background {
+        height: auto;
+        max-width: none;
+        background-image: url("../../public/index-background-mobile.svg");
+        background-position: bottom right;
+    }
 }

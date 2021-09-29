@@ -14,6 +14,9 @@
     > a {
         @include a.animatable();
         color: p.$text-secondary;
+        &:hover {
+            opacity: 80%;
+        }
     }
     > .activated {
         font-weight: 800;
