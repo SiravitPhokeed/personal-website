@@ -85,9 +85,9 @@ export let works = [
     },
     {
         id: "6",
-        name: "Academic Excellence Student Outstanding Academic Performance",
-        desc: "Awarded to students who participated in notable acedemic activities",
-        fullDesc: "An annual certificate awarded to students who participated in notable acedemic activities outside of school, in this case, NSC2021.",
+        name: "Excellent Academic Work Certificate",
+        desc: "Awarded by Suankularb Wittayalai School to students who participated in notable acedemic activities",
+        fullDesc: "An annual certificate awarded by Suankularb Wittayalai School to students who participated in notable acedemic activities outside of school, in this case, NSC2021.",
         type: "certificate",
         links: [
             { name: "Certificate", url: "http://mysk.school/th/myCertificate.php/?user=56565&cert_item=3.2&cert_no=107" },
