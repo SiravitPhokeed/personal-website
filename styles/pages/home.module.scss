@@ -189,13 +189,14 @@
 
 .contact-fieldset {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
     padding: 1rem;
     input {
         display: block;
-        width: calc(100% - 2rem);
+        width: calc(100% - 3rem);
     }
 }
 

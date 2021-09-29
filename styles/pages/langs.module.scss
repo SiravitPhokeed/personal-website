@@ -12,6 +12,17 @@
 .content {
     @include a.float-up();
     min-height: calc(100vh - 14.4rem);
-    padding: 1rem 3rem;
     background: linear-gradient(45deg, p.$primary, p.$tertiary);
+}
+
+@media only screen and (orientation: portrait) {
+    .content {
+        padding: 1rem;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .content {
+        padding: 1rem 3rem;
+    }
 }
