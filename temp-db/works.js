@@ -61,7 +61,7 @@ export let works = [
     {
         id: "4",
         name: "Djikstra Algorithm",
-        desc: "An attempt at implementing the Djikstra Algorithm in C++",
+        desc: "Implementing the Djikstra Algorithm in C++",
         fullDesc: "An attempt to gain more understanding of the Djikstra Algorithm by implementing it in code form via C++.",
         type: "project",
         links: [
