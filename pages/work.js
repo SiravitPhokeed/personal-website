@@ -1,22 +1,40 @@
-// ReactJS import
+// Modules import
 import Link from "next/link";
+import firebase from "../firebase/client-app.js";
 import { useRouter } from "next/router";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 // Style sheet import
 import worksStyle from "../styles/pages/works.module.scss";
 
-// Temporary database import
-import { works } from "../temp-db/works";
-
 export default function Works() {
     const router = useRouter();
+    const [portfolio, portfolioLoading, portfolioError] = useCollection(
+        firebase.firestore().collection("portfolio"),
+        {}
+    );
 
-    function renderWorkLangs(type, uses) {
+    function renderWorkTypes(types) {
+        console.log(portfolio.docs[0].data().links.docs)
+        let key = {
+            activity: "Activity",
+            certificate: "Certificate",
+            project: "Project",
+        }
         return (
             <ul className={worksStyle["work-uses"]}>
-                <span className={worksStyle["work-type"]}>
-                    {`${type[0].toUpperCase()}${type.slice(1)}`}
-                </span>
+                {types.map((type, index) =>
+                    <li key={index} className={worksStyle["work-type"]}>
+                        {key[type]}
+                    </li>
+                )}
+            </ul>
+        );
+    }
+
+    function renderWorkLangs(uses) {
+        return (
+            <ul className={worksStyle["work-uses"]}>
                 {uses.filter(lang => lang.main).map((lang, index) =>
                     <li key={index} className={worksStyle["work-lang"]}>
                         {lang.name}
@@ -38,17 +56,22 @@ export default function Works() {
         else
             filterred_works = works.filter(work => work.type === type);
 
+        
+        
         return (
             <div className="grid">
                 {filterred_works.map(work =>
-                    <Link key={work.id} href={`/work/${work.id}`}>
+                    <Link key={work.data().id} href={`/work/${work.data().id}`}>
                         <a className="card">
                             <div className={worksStyle["work-content"]}>
                                 <div>
-                                    <h3>{work.name}</h3>
-                                    <p>{work.desc}</p>
+                                    <h3>{work.data().name}</h3>
+                                    <p>{work.data().desc}</p>
                                 </div>
-                                {renderWorkLangs(work.type, work.uses || [])}
+                                <div className={worksStyle["work-badges"]}>
+                                    {renderWorkTypes(work.data().types || [])}
+                                    {renderWorkLangs(work.data().skills || [])}
+                                </div>
                             </div>
                         </a>
                     </Link>
@@ -85,7 +108,7 @@ export default function Works() {
                 ])}
             </nav>
             <main className={worksStyle["content"]}>
-                {renderWorksGrid(works)}
+                {portfolioLoading ? <div>Loading</div> : renderWorksGrid(portfolio.docs)}
             </main>
         </div>
     );
