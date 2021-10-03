@@ -1,7 +1,9 @@
 // Modules import
 import Link from "next/link";
 import Image from "next/image";
+import firebase from "../firebase/client-app.js";
 import { useRouter } from "next/router";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 // Components import
 import { Laptop } from "../components/laptop";
@@ -17,11 +19,14 @@ import langSassImage from "../public/index-lang-sass.svg";
 import langCppImage from "../public/index-lang-cpp.svg";
 
 // Temporary database import
-import { works } from "../temp-db/works.js";
 import { contacts } from "../temp-db/contacts";
 
 export default function Home() {
     const router = useRouter();
+    const [portfolio, portfolioLoading, portfolioError] = useCollection(
+        firebase.firestore().collection("portfolio"),
+        {}
+    );
 
     function renderTitleSect() {
         return (
@@ -55,21 +60,36 @@ export default function Home() {
         );
     }
 
-    function renderWorkSect(works) {
+    function renderWorkSect() {
+        function renderWorkTypes(types) {
+            let key = {
+                activity: "Activity",
+                certificate: "Certificate",
+                project: "Project",
+            }
+            return (
+                <ul className={homeStyle["work-type-container"]}>
+                    {types.map((type, index) =>
+                        <li key={index} className={homeStyle["work-type"]}>
+                            {key[type]}
+                        </li>
+                    )}
+                </ul>
+            )
+        }
+
         function renderWorks(works) {
             return (
                 <div className={homeStyle["work-grid"]}>
                     {works.map(work =>
-                        <Link key={work.id} href={`/work/${work.id}`}>
+                        <Link key={work.data().name} href={`/work/${work.data().name}`}>
                             <a className={homeStyle["work-card"]}>
                                 <div className={homeStyle["work-content"]}>
                                     <div>
-                                        <h3>{work.name}</h3>
-                                        <p>{work.desc}</p>
+                                        <h3>{work.data().name}</h3>
+                                        <p>{work.data().desc}</p>
                                     </div>
-                                    <span className={homeStyle["work-type"]}>
-                                        {`${work.type[0].toUpperCase()}${work.type.slice(1)}`}
-                                    </span>
+                                    {renderWorkTypes(work.data().types)}
                                 </div>
                             </a>
                         </Link>
@@ -85,7 +105,7 @@ export default function Home() {
                     <p className={homeStyle["header-subtitle"]}>Projects and certificates</p>
                 </div>
                 <div className={homeStyle["work-grid-container"]}>
-                    {renderWorks(works)}
+                    {portfolioLoading || renderWorks(portfolio.docs)}
                 </div>
                 <div className={homeStyle["continue-container"]}>
                     <button className={homeStyle["continue-button"]} onClick={() => router.push("/work?type=all")}>
@@ -178,7 +198,7 @@ export default function Home() {
     return (
         <main className={homeStyle["main"]}>
             {renderTitleSect()}
-            {renderWorkSect(works)}
+            {renderWorkSect()}
             {renderLangsSect()}
             {renderContactSect(contacts)}
         </main>

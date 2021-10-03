@@ -61,7 +61,7 @@ export default function Works() {
         return (
             <div className="grid">
                 {filterred_works.map(work =>
-                    <Link key={work.data().id} href={`/work/${work.data().name}`}>
+                    <Link key={work.data().name} href={`/work/${work.data().name}`}>
                         <a className="card">
                             <div className={worksStyle["work-content"]}>
                                 <div>
