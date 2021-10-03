@@ -1,7 +1,9 @@
 // ReactJS import
 import Image from "next/image";
-import { useState } from "react";
+import firebase from "../../firebase/client-app.js";
 import ReactMarkdown from "react-markdown";
+import { useState } from "react";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 // Icon import
 import { MdImage, MdLaunch } from "react-icons/md";
@@ -17,19 +19,19 @@ import workStyle from "../../styles/pages/work.module.scss";
 import { works } from "../../temp-db/works.js";
 
 export async function getServerSideProps(content) {
-    const { work_id } = content.query;
-    return { props: { work_id } }
+    const { work_name } = content.query;
+    return { props: { work_name } }
 }
 
-export default function Work({ work_id }) {
+export default function Work({ work_name }) {
     const [readme, setReadme] = useState({
         fetched: false,
         readme: null
     });
-    const [work, setWork] = useState({
-        fetched: true,
-        work: works.filter(work => work.id === work_id)[0]
-    })
+    const [work, workLoading, workError] = useCollection(
+        firebase.firestore().collection("portfolio").where("name", "==", work_name),
+        {}
+    );
 
     function renderImage(type) {
         return (
@@ -64,7 +66,7 @@ export default function Work({ work_id }) {
                 </section> : null}
                 <section className={workStyle["section"]}>
                     <h2>
-                        Find this {work.type}
+                        Find this {work.types[0]}
                     </h2>
                     <div className={workStyle["link-container"]}>
                         {work.links.map(link =>
@@ -83,8 +85,8 @@ export default function Work({ work_id }) {
     }
 
     function fetchReadme() {
-        if (work.fetched)
-            fetch(work.work.readme)
+        if (readme.fetched)
+            fetch(work.readme)
                 .then(res => res.text())
                 .then(response => setReadme({ fetched: true, readme: response }));
     }
@@ -92,10 +94,20 @@ export default function Work({ work_id }) {
     if (readme.fetched === false)
         fetchReadme();
 
-    return (
-        <main className={workStyle["work-grid"]}>
-            {renderImage(work.work.type)}
-            {renderContent(work.work)}
-        </main>
-    )
+    if (workLoading) {
+        console.log("Loading!")
+        return <main className={workStyle["work-grid"]} />;
+    // } else if (readme.fetched === false) {
+    //     console.log("Fetching readme!")
+    //     // fetchReadme();
+    //     return <main className={workStyle["work-grid"]} />;
+    } else {
+        console.log(work.docs[0].data());
+        return (
+            <main className={workStyle["work-grid"]}>
+                {renderImage(work.docs[0].data().type)}
+                {renderContent(work.docs[0].data())}
+            </main>
+        )
+    }
 }

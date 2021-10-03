@@ -15,7 +15,6 @@ export default function Works() {
     );
 
     function renderWorkTypes(types) {
-        console.log(portfolio.docs[0].data().links.docs)
         let key = {
             activity: "Activity",
             certificate: "Certificate",
@@ -52,16 +51,17 @@ export default function Works() {
         if (type === "all")
             filterred_works = works;
         else if (uses)
-            filterred_works = works.filter(work => work.type === type && work.uses.filter(lang => lang.name === uses).length > 0);
+            filterred_works = works.filter(
+                work => work.data().types.includes(type) &&
+                work.data().skills.filter(lang => lang.name === uses).length > 0
+            );
         else
-            filterred_works = works.filter(work => work.type === type);
+            filterred_works = works.filter(work => work.data().types.includes(type));
 
-        
-        
         return (
             <div className="grid">
                 {filterred_works.map(work =>
-                    <Link key={work.data().id} href={`/work/${work.data().id}`}>
+                    <Link key={work.data().id} href={`/work/${work.data().name}`}>
                         <a className="card">
                             <div className={worksStyle["work-content"]}>
                                 <div>
@@ -101,14 +101,14 @@ export default function Works() {
             </header>
             <nav className={worksStyle["navigation"]}>
                 {renderMenuItems([
-                    { name: "All", query: "all", url: "/work?type=all" },
-                    { name: "Projects", query: "project", url: "/work?type=project" },
-                    { name: "Certificates", query: "certificate", url: "/work?type=certificate" },
-                    { name: "Activities", query: "activity", url: "/work?type=activity" },
+                    { name: "All", query: "all", url: "/portfolio?type=all" },
+                    { name: "Projects", query: "project", url: "/portfolio?type=project" },
+                    { name: "Certificates", query: "certificate", url: "/portfolio?type=certificate" },
+                    { name: "Activities", query: "activity", url: "/portfolio?type=activity" },
                 ])}
             </nav>
             <main className={worksStyle["content"]}>
-                {portfolioLoading ? <div>Loading</div> : renderWorksGrid(portfolio.docs)}
+                {portfolioLoading || renderWorksGrid(portfolio.docs)}
             </main>
         </div>
     );
