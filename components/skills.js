@@ -8,9 +8,8 @@ export function Skills({ skills, mainOnly }) {
                 <li key={index} className={badgeStyle["badge-skill"]}>
                     {skill.name}
                 </li>
-            )
-            : skills.map((skill, index) =>
-                <li key={index} className={badgeStyle["badge-skill"]}>
+            ) : skills.map((skill, index) =>
+                <li key={index} className={badgeStyle[`badge-skill${skill.main ? "-main" : ""}`]}>
                     {skill.name}
                 </li>
             )}
