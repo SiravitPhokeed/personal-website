@@ -202,7 +202,7 @@
     padding: 1rem;
     input {
         display: block;
-        width: calc(100% - 3rem);
+        width: calc(100% - 2rem);
     }
 }
 
@@ -211,7 +211,13 @@
     flex-direction: column;
     width: 20rem;
     height: 10rem;
+    margin: 0.5rem;
     justify-content: space-between;
+    > .contact-inputset {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
 
 .contact-right {
@@ -220,8 +226,8 @@
 
 .contact-textarea {
     resize: none;
-    width: calc(100% - 2.5rem);
-    height: 8rem;
+    width: calc(100% - 2.25rem);
+    height: 9rem;
     margin: 0.5rem;
     padding: 0.5rem 0.75rem;
 }

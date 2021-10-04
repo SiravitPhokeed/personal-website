@@ -7,41 +7,16 @@ import { useCollection } from "react-firebase-hooks/firestore";
 // Style sheet import
 import worksStyle from "../styles/pages/works.module.scss";
 
+// Components import
+import { Types } from "../components/types.js";
+import { Skills } from "../components/skills.js";
+
 export default function Works() {
     const router = useRouter();
     const [portfolio, portfolioLoading, portfolioError] = useCollection(
         firebase.firestore().collection("portfolio"),
         {}
     );
-
-    function renderWorkTypes(types) {
-        let key = {
-            activity: "Activity",
-            certificate: "Certificate",
-            project: "Project",
-        }
-        return (
-            <ul className={worksStyle["work-uses"]}>
-                {types.map((type, index) =>
-                    <li key={index} className={worksStyle["work-type"]}>
-                        {key[type]}
-                    </li>
-                )}
-            </ul>
-        );
-    }
-
-    function renderWorkLangs(uses) {
-        return (
-            <ul className={worksStyle["work-uses"]}>
-                {uses.filter(lang => lang.main).map((lang, index) =>
-                    <li key={index} className={worksStyle["work-lang"]}>
-                        {lang.name}
-                    </li>
-                )}
-            </ul>
-        )
-    }
 
     function renderWorksGrid(works) {
         let type = router.query.type || "all";
@@ -69,8 +44,8 @@ export default function Works() {
                                     <p>{work.data().desc}</p>
                                 </div>
                                 <div className={worksStyle["work-badges"]}>
-                                    {renderWorkTypes(work.data().types || [])}
-                                    {renderWorkLangs(work.data().skills || [])}
+                                    <Types types={work.data().types || []} />
+                                    <Skills skills={work.data().skills || []} mainOnly={true} />
                                 </div>
                             </div>
                         </a>
