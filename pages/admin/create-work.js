@@ -88,10 +88,10 @@ export default function CreateWork() {
                     </tr>
                 </thead>
                 <tbody>
-                    {links.map(link =>
-                        <tr>
+                    {links.map((link, index) =>
+                        <tr key={index}>
                             <td>{link.name}</td>
-                            <td><a href={link.url} target="_blank" referrerPolicy="noreferrer">{link.url}</a></td>
+                            <td><a href={link.url} target="_blank" rel="noreferrer">{link.url}</a></td>
                         </tr>
                     )}
                 </tbody>

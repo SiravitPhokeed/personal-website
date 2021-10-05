@@ -1,5 +1,6 @@
 // Modules import
 import Link from "next/link";
+import Image from "next/image";
 import firebase from "../firebase/client-app.js";
 import { useRouter } from "next/router";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -10,6 +11,10 @@ import worksStyle from "../styles/pages/works.module.scss";
 // Components import
 import { Types } from "../components/types.js";
 import { Skills } from "../components/skills.js";
+
+// Photos import
+import placeholderCertificate from "../public/work-certificate.png";
+import placeholderProject from "../public/work-project.png";
 
 export default function Works() {
     const router = useRouter();
@@ -39,9 +44,16 @@ export default function Works() {
                     <Link key={work.data().name} href={`/work/${work.data().name}`}>
                         <a className="card">
                             <div className={worksStyle["work-content"]}>
-                                <div>
-                                    <h3>{work.data().name}</h3>
-                                    <p>{work.data().desc}</p>
+                                <div className={worksStyle["work-upper"]}>
+                                    <div className={worksStyle["work-image"]}>
+                                        <Image src={work.data().preview ? work.data().preview :
+                                            work.data().type === "certificate" ? placeholderCertificate : placeholderProject}
+                                            layout="fill" objectFit="contain" />
+                                    </div>
+                                    <div>
+                                        <h3>{work.data().name}</h3>
+                                        <p>{work.data().desc}</p>
+                                    </div>
                                 </div>
                                 <div className={worksStyle["work-badges"]}>
                                     <Types types={work.data().types || []} />

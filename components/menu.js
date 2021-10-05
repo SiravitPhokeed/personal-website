@@ -1,4 +1,4 @@
-// ReactJs import
+// Modules import
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 

@@ -13,8 +13,8 @@ import homeStyle from "../styles/pages/home.module.scss";
 
 // Photos import
 import holdingImage from "../public/index-holding.png";
-import placeholderCertificate from "../public/work-certificate.png"
-import placeholderProject from "../public/work-project.png"
+import placeholderCertificate from "../public/work-certificate.png";
+import placeholderProject from "../public/work-project.png";
 import langNextImage from "../public/index-lang-next.svg";
 import langReactImage from "../public/index-lang-react.svg";
 import langSassImage from "../public/index-lang-sass.svg";
@@ -22,6 +22,7 @@ import langCppImage from "../public/index-lang-cpp.svg";
 
 // Temporary database import
 import { contacts } from "../temp-db/contacts";
+import { Types } from "../components/types.js";
 
 export default function Home() {
     const router = useRouter();
@@ -63,23 +64,6 @@ export default function Home() {
     }
 
     function renderWorkSect() {
-        function renderWorkTypes(types) {
-            let key = {
-                activity: "Activity",
-                certificate: "Certificate",
-                project: "Project",
-            }
-            return (
-                <ul className={homeStyle["work-type-container"]}>
-                    {types.map((type, index) =>
-                        <li key={index} className={homeStyle["work-type"]}>
-                            {key[type]}
-                        </li>
-                    )}
-                </ul>
-            )
-        }
-
         function renderWorks(works) {
             return (
                 <div className={homeStyle["work-grid"]}>
@@ -89,7 +73,6 @@ export default function Home() {
                                 <div className={homeStyle["work-content"]}>
                                     <div className={homeStyle["work-upper"]}>
                                         <div className={homeStyle["work-image"]}>
-                                            {console.log(work.data().preview)}
                                             <Image src={work.data().preview ? work.data().preview :
                                                 work.data().type === "certificate" ? placeholderCertificate : placeholderProject}
                                                 layout="fill" objectFit="contain" />
@@ -99,7 +82,7 @@ export default function Home() {
                                             <p>{work.data().desc}</p>
                                         </div>
                                     </div>
-                                    {renderWorkTypes(work.data().types)}
+                                    <Types types={work.data().types} />
                                 </div>
                             </a>
                         </Link>
@@ -118,7 +101,7 @@ export default function Home() {
                     {portfolioLoading || renderWorks(portfolio.docs)}
                 </div>
                 <div className={homeStyle["continue-container"]}>
-                    <button className={homeStyle["continue-button"]} onClick={() => router.push("/work?type=all")}>
+                    <button className={homeStyle["continue-button"]} onClick={() => router.push("/portfolio?type=all")}>
                         See all
                     </button>
                 </div>
