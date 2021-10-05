@@ -4,6 +4,7 @@ input[type="text"],
 input[type="number"],
 input[type="email"],
 input[type="password"],
+input[type="url"],
 textarea {
     color: p.$text-secondary;
     background-color: p.$field;
@@ -11,6 +12,15 @@ textarea {
         outline: none;
         box-shadow: 0 0 0 0.2rem p.$field-focused;
     }
+}
+
+input[type="file"] {
+    color: p.$text-primary;
+    background-color: p.$tertiary;
+}
+
+input:invalid {
+    box-shadow: 0 0 0 0.2rem p.$secondary;
 }
 
 // Scrollbar styling

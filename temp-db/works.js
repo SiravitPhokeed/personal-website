@@ -75,8 +75,8 @@ export let works = [
     {
         id: "5",
         name: "Minesweeper Robot Camp",
-        desc: "Learn about military uses of robots and make a minesweeper robot from scratch with the EOD team",
-        fullDesc: "Mahidol University, in cooperation with the Defence Technology Institute, organized this camp to educate about military uses of robots with the goal as making a minesweeper robot from scratch.",
+        desc: "Make a minesweeper robot from scratch and learn about military uses of robots with the EOD team",
+        fullDesc: "Mahidol University, in cooperation with the Defence Technology Institute, organized this camp to educate about military uses of robots with the goal as making a minesweeper robot from scratch at the end of the camp.",
         type: "activity",
         links: [
             { name: "Information", url: "https://il.mahidol.ac.th/th/minesweeper-robot-camp-62/" },

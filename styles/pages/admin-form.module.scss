@@ -1,0 +1,94 @@
+@use "../abstracts/palette.scss" as p;
+@use "../components/button.scss" as cb;
+
+.main {
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+    min-height: calc(100vh - 6rem);
+    background: linear-gradient(45deg, p.$accent, p.$tertiary);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 25rem;
+    max-width: calc(100vw - 8rem);
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: p.$card-translucent;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    textarea {
+        height: 5rem;
+    }
+}
+
+.submit-button {
+    @include cb.button(p.$accent, p.$primary, 1em);
+    &-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+// Link input
+.link-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: p.$tertiary;
+    font-size: 0.8rem;
+    label {
+        color: p.$text-primary;
+    }
+    input {
+        font-size: 1em;
+    }
+}
+
+.table {
+    margin: 1rem 0;
+    border-collapse: collapse;
+    border-radius: 1rem;
+    overflow: hidden;
+    thead {
+        border-radius: 0.5em;
+        color: p.$text-primary;
+        background: p.$primary;
+    }
+    tbody {
+        tr:nth-child(even) {
+            background: p.$card-translucent;
+        }
+        tr:nth-child(odd) {
+            background: p.$card;
+        }
+    }
+    th, td {
+        padding: 0.25em 0.5em;
+    }
+}
+
+.table-name {
+    width: 40%;
+}
+
+.table-url {
+    width: 60%;
+}
+
+// Skills input
+.skills-radio {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    background: p.$field;
+}

@@ -10,6 +10,7 @@
     padding: 0.6rem 3rem;
     position: fixed;
     z-index: 5;
+    backdrop-filter: blur(0.5rem);
     background: p.$card-translucent;
     > a {
         @include a.animatable();

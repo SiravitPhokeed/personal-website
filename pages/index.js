@@ -1,7 +1,9 @@
 // Modules import
 import Link from "next/link";
 import Image from "next/image";
+import firebase from "../firebase/client-app.js";
 import { useRouter } from "next/router";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 // Components import
 import { Laptop } from "../components/laptop";
@@ -11,17 +13,23 @@ import homeStyle from "../styles/pages/home.module.scss";
 
 // Photos import
 import holdingImage from "../public/index-holding.png";
+import placeholderCertificate from "../public/work-certificate.png";
+import placeholderProject from "../public/work-project.png";
 import langNextImage from "../public/index-lang-next.svg";
 import langReactImage from "../public/index-lang-react.svg";
 import langSassImage from "../public/index-lang-sass.svg";
 import langCppImage from "../public/index-lang-cpp.svg";
 
 // Temporary database import
-import { works } from "../temp-db/works.js";
 import { contacts } from "../temp-db/contacts";
+import { Types } from "../components/types.js";
 
 export default function Home() {
     const router = useRouter();
+    const [portfolio, portfolioLoading, portfolioError] = useCollection(
+        firebase.firestore().collection("portfolio"),
+        {}
+    );
 
     function renderTitleSect() {
         return (
@@ -55,21 +63,26 @@ export default function Home() {
         );
     }
 
-    function renderWorkSect(works) {
+    function renderWorkSect() {
         function renderWorks(works) {
             return (
                 <div className={homeStyle["work-grid"]}>
                     {works.map(work =>
-                        <Link key={work.id} href={`/work/${work.id}`}>
+                        <Link key={work.data().name} href={`/work/${work.data().name}`}>
                             <a className={homeStyle["work-card"]}>
                                 <div className={homeStyle["work-content"]}>
-                                    <div>
-                                        <h3>{work.name}</h3>
-                                        <p>{work.desc}</p>
+                                    <div className={homeStyle["work-upper"]}>
+                                        <div className={homeStyle["work-image"]}>
+                                            <Image src={work.data().preview ? work.data().preview :
+                                                work.data().type === "certificate" ? placeholderCertificate : placeholderProject}
+                                                layout="fill" objectFit="contain" />
+                                        </div>
+                                        <div>
+                                            <h3>{work.data().name}</h3>
+                                            <p>{work.data().desc}</p>
+                                        </div>
                                     </div>
-                                    <span className={homeStyle["work-type"]}>
-                                        {`${work.type[0].toUpperCase()}${work.type.slice(1)}`}
-                                    </span>
+                                    <Types types={work.data().types} />
                                 </div>
                             </a>
                         </Link>
@@ -85,10 +98,10 @@ export default function Home() {
                     <p className={homeStyle["header-subtitle"]}>Projects and certificates</p>
                 </div>
                 <div className={homeStyle["work-grid-container"]}>
-                    {renderWorks(works)}
+                    {portfolioLoading || renderWorks(portfolio.docs)}
                 </div>
                 <div className={homeStyle["continue-container"]}>
-                    <button className={homeStyle["continue-button"]} onClick={() => router.push("/work?type=all")}>
+                    <button className={homeStyle["continue-button"]} onClick={() => router.push("/portfolio?type=all")}>
                         See all
                     </button>
                 </div>
@@ -178,7 +191,7 @@ export default function Home() {
     return (
         <main className={homeStyle["main"]}>
             {renderTitleSect()}
-            {renderWorkSect(works)}
+            {renderWorkSect()}
             {renderLangsSect()}
             {renderContactSect(contacts)}
         </main>

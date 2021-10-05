@@ -27,7 +27,6 @@ button {
 
 input, textarea {
     font-size: 1rem;
-    margin: 0.5rem;
     padding: 0.5rem;
     border-radius: 1rem;
 }
@@ -38,6 +37,7 @@ input {
 }
 
 textarea {
+    border: none;
     font-family: "Inter", sans-serif;
 }
 

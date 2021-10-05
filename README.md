@@ -15,7 +15,7 @@ npm run dev
 
 Or alternatively, enter the following line for a faster built version:
 ```
-npm run dev
+npm run build
 npm start
 ```
 Keep in mind that this might take a while to boot up.

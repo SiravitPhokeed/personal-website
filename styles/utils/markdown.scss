@@ -24,6 +24,7 @@
     pre > code {
         display: block;
         word-break: break-all;
+        white-space: pre-line;
     }
     code {
         font-size: 0.8rem;
