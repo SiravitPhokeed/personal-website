@@ -15,9 +15,6 @@ import projectImage from "../../public/work-project.png";
 // Style sheet import
 import workStyle from "../../styles/pages/work.module.scss";
 
-// Temporary database import
-import { works } from "../../temp-db/works.js";
-
 export async function getServerSideProps(content) {
     const { work_name } = content.query;
     return { props: { work_name } }
@@ -33,12 +30,15 @@ export default function Work({ work_name }) {
         {}
     );
 
-    function renderImage(type) {
+    function renderImage(image, type) {
         return (
             <div className={workStyle["image"]}>
-                {type === "certificate"
+                {image
+                ? <Image src={image} layout="fill" objectFit="contain" />
+                : type === "certificate"
                 ? <Image src={certificateImage} alt="Certificate clipart" />
-                : <Image src={projectImage} alt="Project clipart" />}
+                : <Image src={projectImage} alt="Project clipart" />
+                }
             </div>
         )
     }
@@ -76,7 +76,7 @@ export default function Work({ work_name }) {
                         )}
                     </div>
                 </section>
-                {work.type === "project" ? <section className={workStyle["section"]}>
+                {work.types[0] === "project" ? <section className={workStyle["section"]}>
                     <h2>GitHub Readme</h2>
                     <ReactMarkdown className={`markdown ${workStyle["readme-markdown"]}`}>{readme.readme}</ReactMarkdown>
                 </section> : null}
@@ -84,28 +84,22 @@ export default function Work({ work_name }) {
         )
     }
 
-    function fetchReadme() {
-        if (readme.fetched)
-            fetch(work.readme)
-                .then(res => res.text())
-                .then(response => setReadme({ fetched: true, readme: response }));
-    }
-
-    if (readme.fetched === false)
-        fetchReadme();
-
     if (workLoading) {
-        console.log("Loading!")
+        console.log("Loading!");
         return <main className={workStyle["work-grid"]} />;
-    // } else if (readme.fetched === false) {
-    //     console.log("Fetching readme!")
-    //     // fetchReadme();
-    //     return <main className={workStyle["work-grid"]} />;
+
+    } else if (readme.fetched === false) {
+        console.log("Fetching readme!");
+        fetch(work.docs[0].data().readme)
+            .then(res => res.text())
+            .then(response => setReadme({ fetched: true, readme: response }));
+        return <main className={workStyle["work-grid"]} />;
+
     } else {
         console.log(work.docs[0].data());
         return (
             <main className={workStyle["work-grid"]}>
-                {renderImage(work.docs[0].data().type)}
+                {renderImage(work.docs[0].data().preview || null, work.docs[0].data().type)}
                 {renderContent(work.docs[0].data())}
             </main>
         )

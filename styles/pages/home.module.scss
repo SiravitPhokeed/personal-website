@@ -128,6 +128,18 @@
     gap: 0.25rem;
 }
 
+.work-upper {
+    display: grid;
+    grid-template-columns: 5rem auto;
+    gap: 0.5rem;
+}
+
+.work-image {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+}
+
 .work-type {
     width: fit-content;
     margin-top: 0.5rem;

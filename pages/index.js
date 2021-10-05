@@ -13,6 +13,8 @@ import homeStyle from "../styles/pages/home.module.scss";
 
 // Photos import
 import holdingImage from "../public/index-holding.png";
+import placeholderCertificate from "../public/work-certificate.png"
+import placeholderProject from "../public/work-project.png"
 import langNextImage from "../public/index-lang-next.svg";
 import langReactImage from "../public/index-lang-react.svg";
 import langSassImage from "../public/index-lang-sass.svg";
@@ -85,9 +87,17 @@ export default function Home() {
                         <Link key={work.data().name} href={`/work/${work.data().name}`}>
                             <a className={homeStyle["work-card"]}>
                                 <div className={homeStyle["work-content"]}>
-                                    <div>
-                                        <h3>{work.data().name}</h3>
-                                        <p>{work.data().desc}</p>
+                                    <div className={homeStyle["work-upper"]}>
+                                        <div className={homeStyle["work-image"]}>
+                                            {console.log(work.data().preview)}
+                                            <Image src={work.data().preview ? work.data().preview :
+                                                work.data().type === "certificate" ? placeholderCertificate : placeholderProject}
+                                                layout="fill" objectFit="contain" />
+                                        </div>
+                                        <div>
+                                            <h3>{work.data().name}</h3>
+                                            <p>{work.data().desc}</p>
+                                        </div>
                                     </div>
                                     {renderWorkTypes(work.data().types)}
                                 </div>
