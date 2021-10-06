@@ -20,7 +20,7 @@ const clientCredentials = {
 if (!firebase.apps.length) {
     firebase.initializeApp(clientCredentials);
     if (typeof window !== "undefined") {
-        if ("measurementId" in firebaseConfig) {
+        if ("measurementId" in clientCredentials) {
             firebase.analytics();
             firebase.appCheck().activate(
                 process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
