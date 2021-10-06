@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 // Icon import
-import { MdImage, MdLaunch } from "react-icons/md";
+import { MdLaunch } from "react-icons/md";
 
 // Photos import
 import certificateImage from "../../public/work-certificate.png";
