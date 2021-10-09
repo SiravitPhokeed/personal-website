@@ -6,12 +6,13 @@ import { useRouter } from "next/router";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 // Components import
-import { Laptop } from "../components/laptop";
+import { Laptop } from "../components/laptop.js";
 
 // Style sheet import
 import homeStyle from "../styles/pages/home.module.scss";
 
 // Photos import
+import workBackground from "../public/index-portfolio.svg";
 import holdingImage from "../public/index-holding.png";
 import placeholderCertificate from "../public/work-certificate.png";
 import placeholderProject from "../public/work-project.png";
@@ -70,7 +71,7 @@ export default function Home() {
                     {works.map(work =>
                         <Link key={work.data().name} href={`/work/${work.data().name}`}>
                             <a className={homeStyle["work-card"]}>
-                                <div className={homeStyle["work-content"]}>
+                                <div className={homeStyle["work-card-content"]}>
                                     <div className={homeStyle["work-upper"]}>
                                         <div className={homeStyle["work-image"]}>
                                             <Image src={work.data().preview ? work.data().preview :
@@ -88,22 +89,32 @@ export default function Home() {
                         </Link>
                     )}
                 </div>
-            )
+            );
         }
 
         return (
             <section className={homeStyle["work-section"]} id="work">
-                <div className={homeStyle["header"]}>
-                    <h2 className={homeStyle["header-header"]}>Stuff I’ve worked on</h2>
-                    <p className={homeStyle["header-subtitle"]}>Projects and certificates</p>
-                </div>
-                <div className={homeStyle["work-grid-container"]}>
-                    {portfolioLoading || renderWorks(portfolio.docs)}
-                </div>
-                <div className={homeStyle["continue-container"]}>
-                    <button className={homeStyle["continue-button"]} onClick={() => router.push("/portfolio?type=all")}>
-                        See all
-                    </button>
+                {/* <div className={homeStyle["work-background"]}>
+                    <Image src={workBackground} layout="fill" objectFit="contain" objectPosition="center left" />
+                </div> */}
+                <div className={homeStyle["work-foreground"]}>
+                    <div className={homeStyle["header"]}>
+                        <h2 className={homeStyle["header-header"]}>Stuff I’ve worked on</h2>
+                        <p className={homeStyle["header-subtitle"]}>Projects and certificates</p>
+                    </div>
+                    <div className={homeStyle["work-content"]}>
+                        <p className={homeStyle["work-text"]}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent aliquet metus fermentum mi efficitur dignissim. Suspendisse molestie odio tortor, sed aliquam lectus egestas vitae. Vestibulum facilisis rhoncus justo, id tincidunt turpis sollicitudin suscipit. Praesent egestas in neque non pharetra. Maecenas eu dui vel ligula consectetur luctus in tincidunt velit. Vestibulum consequat est eros, non vestibulum velit porttitor id. In posuere a mi a fermentum. Etiam id tincidunt magna, in tempus urna.
+                        </p>
+                        <div className={homeStyle["work-grid-container"]}>
+                            {portfolioLoading || renderWorks(portfolio.docs)}
+                        </div>
+                    </div>
+                    <div className={homeStyle["continue-container"]}>
+                        <button className={homeStyle["continue-button"]} onClick={() => router.push("/portfolio?type=all")}>
+                            See all
+                        </button>
+                    </div>
                 </div>
             </section>
         );
