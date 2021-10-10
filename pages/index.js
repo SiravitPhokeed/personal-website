@@ -135,7 +135,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div>
-                        <button className={homeStyle["continue-button"]} onClick={() => router.push("/langs")}>
+                        <button className={homeStyle["continue-button"]} onClick={() => router.push("/skills")}>
                             See all
                         </button>
                     </div>
