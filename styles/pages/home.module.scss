@@ -2,12 +2,8 @@
 @use "../abstracts/palette.scss" as p;
 @use "../components/button.scss" as cb;
 
-.main {
-    background: url("../../public/index-background.svg") fixed;
-    background-position: left;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
+// .main {
+// }
 
 .header {
     margin: 2rem 2rem 1rem 2rem;
@@ -24,6 +20,13 @@
 }
 
 // Hi, I'm Siravit P!
+.title-section {
+    background: url("../../public/index-background.svg") fixed;
+    background-position: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .title-header {
     @include a.float-right();
     grid-area: header;
@@ -59,6 +62,7 @@
     align-items: flex-end;
     position: relative;
     width: 100%;
+    height: 120vh;
     background-repeat: no-repeat;
     background-size: auto 100%;
     &-container {
@@ -71,7 +75,8 @@
 .title-image {
     @include a.float-up();
     position: relative;
-    height: 26rem;
+    bottom: 10vh;
+    height: 90vh;
     width: 100%;
 }
 
@@ -91,22 +96,14 @@
 
 // Stuff I've worked on
 .work-section {
-    display: grid;
-    grid-template-areas: "section";
-    min-height: 100vh;
-    backdrop-filter: blur(1rem);
-}
-
-.work-background {
-    grid-area: section;
-    position: relative;
-    top: 0rem;
-    height: 50vh;
-}
-
-.work-foreground {
-    grid-area: section;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: url("../../public/index-portfolio.svg") no-repeat;
+    background-position: center left;
+    background-size: auto 75%;
+    box-shadow: 0 -1rem 2rem 1rem p.$card;
 }
 
 .work-content {
@@ -115,17 +112,26 @@
 }
 
 .work-text {
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem;
+    > .work-header {
+        font-size: 1.5rem;
+        font-weight: 1000;
+    }
+    > .work-paragraph {
+        font-size: 1rem;
+        font-weight: 300;
+    }
 }
 
 .work-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     gap: 0.8rem;
+    padding: 1rem;
     &-container {
-        &::-webkit-scrollbar {
-            display: none;
-        }
         padding-right: 0.3rem;
         height: calc(100vh - 12.3rem);
         overflow: hidden scroll;
@@ -140,6 +146,7 @@
     border-radius: 1rem;
     color: p.$text-secondary;
     background: p.$card;
+    box-shadow: 0 0.25rem 0 #BFBFBF;
     &:hover {
         padding: 1.1rem;
     }
@@ -184,10 +191,9 @@
     justify-content: space-between;
     align-items: flex-end;
     min-height: 100vh;
-}
-
-.langs-background {
-    backdrop-filter: blur(2rem);
+    background: url("../../public/index-skills.svg") no-repeat;
+    background-position: center right;
+    background-size: contain;
 }
 
 .langs-main {
@@ -324,7 +330,7 @@
     }
 
     .title-background {
-        height: 100vh;
+        height: 120vh;
         background-image: url("../../public/index-header.svg");
         background-position: center right;
     }

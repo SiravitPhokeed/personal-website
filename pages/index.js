@@ -94,27 +94,25 @@ export default function Home() {
 
         return (
             <section className={homeStyle["work-section"]} id="work">
-                {/* <div className={homeStyle["work-background"]}>
-                    <Image src={workBackground} layout="fill" objectFit="contain" objectPosition="center left" />
-                </div> */}
-                <div className={homeStyle["work-foreground"]}>
-                    <div className={homeStyle["header"]}>
-                        <h2 className={homeStyle["header-header"]}>Stuff I’ve worked on</h2>
-                        <p className={homeStyle["header-subtitle"]}>Projects and certificates</p>
-                    </div>
+                <div>
                     <div className={homeStyle["work-content"]}>
-                        <p className={homeStyle["work-text"]}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent aliquet metus fermentum mi efficitur dignissim. Suspendisse molestie odio tortor, sed aliquam lectus egestas vitae. Vestibulum facilisis rhoncus justo, id tincidunt turpis sollicitudin suscipit. Praesent egestas in neque non pharetra. Maecenas eu dui vel ligula consectetur luctus in tincidunt velit. Vestibulum consequat est eros, non vestibulum velit porttitor id. In posuere a mi a fermentum. Etiam id tincidunt magna, in tempus urna.
-                        </p>
+                        <div className={homeStyle["work-text"]}>
+                            <h2 className={homeStyle["work-header"]}>
+                                All code should be readable.
+                            </h2>
+                            <p className={homeStyle["work-paragraph"]}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent aliquet metus fermentum mi efficitur dignissim. Suspendisse molestie odio tortor, sed aliquam lectus egestas vitae. Vestibulum facilisis rhoncus justo, id tincidunt turpis sollicitudin suscipit.
+                            </p>
+                        </div>
                         <div className={homeStyle["work-grid-container"]}>
                             {portfolioLoading || renderWorks(portfolio.docs)}
                         </div>
                     </div>
-                    <div className={homeStyle["continue-container"]}>
-                        <button className={homeStyle["continue-button"]} onClick={() => router.push("/portfolio?type=all")}>
-                            See all
-                        </button>
-                    </div>
+                </div>
+                <div className={homeStyle["continue-container"]}>
+                    <button className={homeStyle["continue-button"]} onClick={() => router.push("/portfolio?type=all")}>
+                        See all
+                    </button>
                 </div>
             </section>
         );
