@@ -21,7 +21,7 @@ export function Laptop() {
             <div className={laptopStyle["laptop-keyboard"]} />
             <div className={laptopStyle["laptop-keyboard-content"]}>
                 <h3>Emocial</h3>
-                <Link href="/work/0">
+                <Link href="/work/Emocial">
                     <a>Learn more about this project <MdLaunch /></a>
                 </Link>
             </div>
