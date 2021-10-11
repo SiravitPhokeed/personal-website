@@ -25,7 +25,7 @@ export function Menu() {
                 { name: "Home", url: "/" },
                 { name: "About", url: "/about" },
                 { name: "Portfolio", url: "/portfolio?type=all" },
-                { name: "Skills", url: "/langs" },
+                { name: "Skills", url: "/skills" },
                 { name: "Contact", url: "/#contact" }
             ])}
         </nav>
