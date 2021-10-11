@@ -1,0 +1,6 @@
+@use "../abstracts/palette.scss" as p;
+@use "../components/button.scss" as cb;
+
+.button {
+    @include cb.button(p.$accent, p.$primary, 1rem);
+}

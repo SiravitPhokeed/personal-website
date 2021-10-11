@@ -22,7 +22,7 @@ import langSassImage from "../public/index-lang-sass.svg";
 import langCppImage from "../public/index-lang-cpp.svg";
 
 // Temporary database import
-import { contacts } from "../temp-db/contacts";
+import { contacts } from "../temp-db/contacts.js";
 import { Types } from "../components/types.js";
 
 export default function Home() {
@@ -101,7 +101,7 @@ export default function Home() {
                                 All code should be readable.
                             </h2>
                             <p className={homeStyle["work-paragraph"]}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent aliquet metus fermentum mi efficitur dignissim. Suspendisse molestie odio tortor, sed aliquam lectus egestas vitae. Vestibulum facilisis rhoncus justo, id tincidunt turpis sollicitudin suscipit.
+                                And I mean it. I have been working on code projects both individually and in teams for {new Date().getFullYear() - 2019} years, and I have learnt that
                             </p>
                         </div>
                         <div className={homeStyle["work-grid-container"]}>
@@ -122,7 +122,7 @@ export default function Home() {
         return (
             <section className={homeStyle["langs-section"]}>
                 <div className={homeStyle["header"]}>
-                    <h2 className={homeStyle["header-header"]}>I’m also comfortable with…</h2>
+                    <h2 className={homeStyle["header-header"]}>Languages and tools I use</h2>
                 </div>
                 <div className={homeStyle["langs-main"]}>
                     <div className={homeStyle["langs-column"]}>
@@ -156,20 +156,17 @@ export default function Home() {
     function renderContactSect(contacts) {
         return (
             <section className={homeStyle["contact-section"]} id="contact">
-                <div className={homeStyle["header"]}>
-                    <h2 className={homeStyle["header-header"]}>Get in touch!</h2>
-                </div>
-                <div className={homeStyle["work-grid-container"]}>
-                    <div className={homeStyle["work-grid"]}>
-                        {contacts.map(contact =>
-                            <a className={homeStyle["work-card"]} key={contact.id} href={contact.url} target="_blank" rel="noreferrer">
-                                <h3>{contact.name}</h3>
-                                <p>{contact.type}</p>
-                            </a>
-                        )}
-                    </div>
-                </div>
-                <div>
+                <h2 className={homeStyle["contact-header"]}>
+                    Contact me
+                </h2>
+                <ul className={homeStyle["contact-list"]}>
+                    {contacts.map(contact =>
+                        <a href={contact.url} target="_blank" rel="noreferrer" className={homeStyle["contact-type"]}>
+                            <li>{contact.type}</li>
+                        </a>
+                    )}
+                </ul>
+                <div className={homeStyle["contact-fieldset-container"]}>
                     {renderContactMe()}
                 </div>
             </section>
