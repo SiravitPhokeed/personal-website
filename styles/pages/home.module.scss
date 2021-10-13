@@ -2,6 +2,18 @@
 @use "../abstracts/palette.scss" as p;
 @use "../components/button.scss" as cb;
 
+.main {
+    background: url("../../public/index-background.svg") fixed;
+    background-position: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.middle {
+    background: p.$card;
+    box-shadow: 0 0 2rem 3rem p.$card;
+}
+
 .header {
     margin: 2rem 2rem 1rem 2rem;
     color: p.$text-secondary;
@@ -17,12 +29,6 @@
 }
 
 // Hi, I'm Siravit P!
-.title-section {
-    background: url("../../public/index-background.svg") fixed;
-    background-position: left;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
 
 .title-header {
     @include a.float-right();
@@ -100,7 +106,6 @@
     background: url("../../public/index-portfolio.svg") no-repeat;
     background-position: center left;
     background-size: auto 100%;
-    box-shadow: 0 -1rem 2rem 1rem p.$card;
 }
 
 .work-content {
@@ -136,7 +141,7 @@
 }
 
 .work-card {
-    @include a.clicky-scale-up(1.05);
+    @include a.clicky-scale-up(1.05, true);
     min-width: fit-content;
     font-size: 0.7rem;
     padding: 1rem;
@@ -231,20 +236,17 @@
 .contact-section {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1rem;
-    padding-top: 2rem;
-    min-height: calc(100vh - 5rem);
+    padding: 2rem;
+    min-height: calc(100vh - 6.25rem);
     box-shadow: 0 -1rem 2rem 1rem p.$card;
-    background: url("../../public/index-background.svg") fixed;
-    background-position: left;
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 .contact-header {
     font-size: 2.75rem;
     font-weight: 1000;
-    color: p.$text-primary;
+    color: p.$text-secondary;
     text-align: center;
 }
 
@@ -255,10 +257,12 @@
     gap: 0.25rem;
     list-style: none;
     > .contact-type {
-        width: 2rem;
-        height: 2rem;
-        border-radius: 1rem;
-        background: p.$card;
+        @include a.clicky-scale-up(1.1);
+        width: 3rem;
+        height: 3rem;
+        border-radius: 1.5rem;
+        background: p.$primary-translucent;
+        backdrop-filter: blur(1rem);
     }
 }
 
@@ -270,7 +274,8 @@
     gap: 2rem;
     padding: 1rem;
     border-radius: 1rem;
-    background: p.$card-translucent;
+    background: p.$primary-translucent;
+    backdrop-filter: blur(1rem);
     input {
         display: block;
         width: calc(100% - 2rem);

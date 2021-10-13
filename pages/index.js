@@ -161,8 +161,8 @@ export default function Home() {
                 </h2>
                 <ul className={homeStyle["contact-list"]}>
                     {contacts.map(contact =>
-                        <a href={contact.url} target="_blank" rel="noreferrer" className={homeStyle["contact-type"]}>
-                            <li>{contact.type}</li>
+                        <a key={contact.type} href={contact.url} target="_blank" rel="noreferrer" className={homeStyle["contact-type"]}>
+                            <li></li>
                         </a>
                     )}
                 </ul>
@@ -197,8 +197,10 @@ export default function Home() {
     return (
         <main className={homeStyle["main"]}>
             {renderTitleSect()}
-            {renderWorkSect()}
-            {renderLangsSect()}
+            <div className={homeStyle["middle"]}>
+                {renderWorkSect()}
+                {renderLangsSect()}
+            </div>
             {renderContactSect(contacts)}
         </main>
     );

@@ -104,14 +104,15 @@ $animation-speed: 0.25s;
 
 @mixin clicky() {
     @include animatable();
+    box-shadow: 0 0.25rem 0 p.$clicky-side;
     cursor: pointer;
     &:hover {
         opacity: 80%;
     }
     &:active {
         transition: none;
-        box-shadow: inset 0 0.2em 0.5em 0 p.$shadow;
-        transform: translateY(0.1rem);
+        box-shadow: 0 0 0 p.$clicky-side;
+        transform: translateY(0.25rem);
     }
 }
 
@@ -127,16 +128,24 @@ $animation-speed: 0.25s;
     }
 }
 
-@mixin clicky-scale-up($scale) {
+@mixin clicky-scale-up($scale, $has-shadow: false) {
     @include animatable();
     cursor: pointer;
     &:hover {
         opacity: 80%;
         transform: scale($scale);
     }
-    &:active {
-        transition: none;
-        box-shadow: inset 0 0.2em 0.5em 0 p.$shadow;
-        transform: scale($scale) translateY(0.1rem);
+    @if $has-shadow {
+        box-shadow: 0 0.25rem 0 p.$clicky-side;
+        &:active {
+            transition: none;
+            box-shadow: 0 0 0 p.$clicky-side;
+            transform: scale($scale) translateY(0.1rem);
+        }
+    }
+    @else {
+        &:active {
+            transform: scale($scale * 1.1);
+        }
     }
 }

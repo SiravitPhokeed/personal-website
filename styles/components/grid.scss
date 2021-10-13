@@ -17,7 +17,7 @@
 }
 
 .card {
-    @include a.clicky-scale-up(1.05);
+    @include a.clicky-scale-up(1.05, true);
     min-width: fit-content;
     font-size: 0.8rem;
     padding: 1rem;

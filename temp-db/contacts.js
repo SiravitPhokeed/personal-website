@@ -24,9 +24,15 @@ export let contacts = [
         id: "3"
     },
     {
+        type: "Call",
+        name: "(+66) 095-852-0516",
+        url: "tel:+66958520516",
+        id: "4"
+    },
+    {
         type: "GitHub",
         name: "SiravitPhokeed",
         url: "https://github.com/SiravitPhokeed",
-        id: "3"
+        id: "5"
     }
 ];
