@@ -16,12 +16,15 @@ import { Skills } from "../components/skills.js";
 import placeholderCertificate from "../public/work-certificate.png";
 import placeholderProject from "../public/work-project.png";
 
-export default function Works() {
+export async function getServerSideProps() {
+    const collection = firebase.firestore().collection("portfolio");
+    const items = (await collection.get()).docs;
+    const portfolio = items.map((item) => item.data());
+    return ({ props: { portfolio } });
+}
+
+export default function Works({ portfolio }) {
     const router = useRouter();
-    const [portfolio, portfolioLoading, portfolioError] = useCollection(
-        firebase.firestore().collection("portfolio"),
-        {}
-    );
 
     function renderWorksGrid(works) {
         let type = router.query.type || "all";
@@ -32,32 +35,32 @@ export default function Works() {
             filterred_works = works;
         else if (uses)
             filterred_works = works.filter(
-                work => work.data().types.includes(type) &&
-                work.data().skills.filter(lang => lang.name === uses).length > 0
+                work => work.types.includes(type) &&
+                work.skills.filter(lang => lang.name === uses).length > 0
             );
         else
-            filterred_works = works.filter(work => work.data().types.includes(type));
+            filterred_works = works.filter(work => work.types.includes(type));
 
         return (
             <div className="grid">
                 {filterred_works.map(work =>
-                    <Link key={work.data().name} href={`/work/${work.data().name}`}>
+                    <Link key={work.name} href={`/work/${work.name}`}>
                         <a className="card">
                             <div className={worksStyle["work-content"]}>
                                 <div className={worksStyle["work-upper"]}>
                                     <div className={worksStyle["work-image"]}>
-                                        <Image src={work.data().preview ? work.data().preview :
-                                            work.data().type === "certificate" ? placeholderCertificate : placeholderProject}
+                                        <Image src={work.preview ? work.preview :
+                                            work.type === "certificate" ? placeholderCertificate : placeholderProject}
                                             layout="fill" objectFit="contain" />
                                     </div>
                                     <div>
-                                        <h3>{work.data().name}</h3>
-                                        <p>{work.data().desc}</p>
+                                        <h3>{work.name}</h3>
+                                        <p>{work.desc}</p>
                                     </div>
                                 </div>
                                 <div className={worksStyle["work-badges"]}>
-                                    <Types types={work.data().types || []} />
-                                    <Skills skills={work.data().skills || []} mainOnly={true} />
+                                    <Types types={work.types || []} />
+                                    <Skills skills={work.skills || []} mainOnly={true} />
                                 </div>
                             </div>
                         </a>
@@ -95,7 +98,7 @@ export default function Works() {
                 ])}
             </nav>
             <main className={worksStyle["content"]}>
-                {portfolioLoading || renderWorksGrid(portfolio.docs)}
+                {renderWorksGrid(portfolio)}
             </main>
         </div>
     );

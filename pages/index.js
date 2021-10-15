@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import firebase from "../firebase/client-app.js";
 import { useRouter } from "next/router";
-import { useCollection } from "react-firebase-hooks/firestore";
 
 // Components import
 import { Laptop } from "../components/laptop";
