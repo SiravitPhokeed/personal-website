@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import firebase from "../firebase/client-app.js";
 import { useRouter } from "next/router";
-import { useCollection } from "react-firebase-hooks/firestore";
 
 // Components import
 import { Laptop } from "../components/laptop";
@@ -24,12 +23,15 @@ import langCppImage from "../public/index-lang-cpp.svg";
 import { contacts } from "../temp-db/contacts";
 import { Types } from "../components/types.js";
 
-export default function Home() {
+export async function getServerSideProps() {
+    const collection = firebase.firestore().collection("portfolio");
+    const items = (await collection.get()).docs;
+    const portfolio = items.map((item) => item.data());
+    return ({ props: { portfolio } });
+}
+
+export default function Home({ portfolio }) {
     const router = useRouter();
-    const [portfolio, portfolioLoading, portfolioError] = useCollection(
-        firebase.firestore().collection("portfolio"),
-        {}
-    );
 
     function renderTitleSect() {
         return (
@@ -65,24 +67,25 @@ export default function Home() {
 
     function renderWorkSect() {
         function renderWorks(works) {
+            console.log(works);
             return (
                 <div className={homeStyle["work-grid"]}>
                     {works.map(work =>
-                        <Link key={work.data().name} href={`/work/${work.data().name}`}>
+                        <Link key={work.name} href={`/work/${work.name}`}>
                             <a className={homeStyle["work-card"]}>
                                 <div className={homeStyle["work-content"]}>
                                     <div className={homeStyle["work-upper"]}>
                                         <div className={homeStyle["work-image"]}>
-                                            <Image src={work.data().preview ? work.data().preview :
-                                                work.data().type === "certificate" ? placeholderCertificate : placeholderProject}
+                                            <Image src={work.preview ? work.preview :
+                                                work.type === "certificate" ? placeholderCertificate : placeholderProject}
                                                 layout="fill" objectFit="contain" />
                                         </div>
                                         <div>
-                                            <h3>{work.data().name}</h3>
-                                            <p>{work.data().desc}</p>
+                                            <h3>{work.name}</h3>
+                                            <p>{work.desc}</p>
                                         </div>
                                     </div>
-                                    <Types types={work.data().types} />
+                                    <Types types={work.types} />
                                 </div>
                             </a>
                         </Link>
@@ -98,7 +101,7 @@ export default function Home() {
                     <p className={homeStyle["header-subtitle"]}>Projects and certificates</p>
                 </div>
                 <div className={homeStyle["work-grid-container"]}>
-                    {portfolioLoading || renderWorks(portfolio.docs)}
+                    {renderWorks(portfolio)}
                 </div>
                 <div className={homeStyle["continue-container"]}>
                     <button className={homeStyle["continue-button"]} onClick={() => router.push("/portfolio?type=all")}>
